@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Global Remote Jobs</title>
+  <title>Remote Jobs — U.S. Residents</title>
   <style>
     :root{
       --bg1:#0d1b2a; --bg2:#1b263b; --accent:#00d4ff; --cta:#2ecc71; --sticky:#e67e22;
@@ -36,9 +36,9 @@
       font-weight:700; text-decoration:none; margin-top:18px; position:relative; overflow:hidden;
       transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
       -webkit-tap-highlight-color:transparent;
+      cursor:pointer;
     }
     .cta:active{ transform:scale(.98); }
-    .cta.disabled{ background:#555; cursor:not-allowed; opacity:.95; }
 
     /* ripple */
     .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,0.18); animation:ripple .6s linear; pointer-events:none;}
@@ -51,32 +51,34 @@
       box-shadow:0 8px 24px rgba(0,0,0,0.35); text-decoration:none;
       transition:transform .12s ease, opacity .12s ease;
       -webkit-tap-highlight-color:transparent;
+      cursor:pointer;
     }
     .sticky-cta:active{ transform:translateX(-50%) scale(.98); }
-    .sticky-cta.disabled{ background:#666; cursor:not-allowed; opacity:.95; }
 
-    /* Popup / Waitlist modal */
-    .modal-backdrop{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:1000; align-items:center; justify-content:center; }
-    .modal{ background:#0f1a2a; padding:18px; border-radius:10px; width:92%; max-width:420px; text-align:left; box-shadow:0 10px 30px rgba(0,0,0,0.6); color:#fff; }
-    .modal h3{ margin:0 0 8px; color:var(--accent); }
-    .modal p{ margin:0 0 12px; color:var(--muted); font-size:0.95rem; }
-    .form-row{ display:flex; gap:8px; margin-bottom:8px; }
-    .form-row input[type="email"]{
-      flex:1; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.02); color:#fff;
-      outline:none; font-size:0.95rem;
+    /* Popup (simple exit-intent reminder) */
+    .popup {
+      display:none;
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      background:#0f1a2a;
+      padding:16px;
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      z-index:1000;
+      text-align:center;
+      width:90%;
+      max-width:420px;
     }
-    .form-row button{ padding:10px 14px; border-radius:8px; border:none; background:var(--cta); color:#fff; font-weight:700; cursor:pointer; }
-    .note{ font-size:0.9rem; color:var(--muted); margin-top:6px; }
-    .thankyou{ color:var(--accent); font-weight:700; margin-top:8px; }
+    .popup h3{ margin:0 0 8px; color:var(--accent); }
+    .popup p{ margin:0 0 12px; color:var(--muted); }
 
-    /* status note */
     .status-note{ margin-top:12px; color:var(--muted); font-size:0.95rem; }
 
-    /* mobile micro-interactions: larger tap targets */
     @media (max-width:600px){
       .cta{ padding:12px 22px; font-size:1rem; border-radius:34px; }
       .sticky-cta{ padding:12px 20px; font-size:1rem; border-radius:28px; }
-      .form-row input[type="email"]{ font-size:1rem; padding:12px; }
     }
   </style>
 </head>
@@ -90,7 +92,7 @@
     <picture>
       <source srcset="copilot_image_1772059837403.webp" type="image/webp">
       <source srcset="copilot_image_1772059837403.jpeg" type="image/jpeg">
-      <img src="copilot_image_1772059837403.jpeg" alt="Global Remote Jobs Now Hiring" loading="lazy" width="800" height="450">
+      <img src="copilot_image_1772059837403.jpeg" alt="Remote jobs hiring" loading="lazy" width="800" height="450">
     </picture>
 
     <div style="margin-top:8px;">
@@ -104,278 +106,183 @@
   <!-- Sticky contextual CTA -->
   <a id="stickyCta" class="sticky-cta" href="javascript:void(0)" aria-label="Apply Now">Apply Now</a>
 
-  <!-- Waitlist / Email capture modal -->
-  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document">
-      <h3 id="modalTitle">Join the waitlist</h3>
-      <p id="modalText">You’ve viewed all available offers. Leave your email and we’ll notify you when new opportunities open.</p>
-      <div class="form-row">
-        <input id="emailInput" type="email" placeholder="you@example.com" aria-label="Email address" />
-        <button id="emailSubmit">Join</button>
-      </div>
-      <div class="note" id="modalNote">We’ll never share your email. You can unsubscribe anytime.</div>
-      <div class="thankyou" id="thankYouMsg" style="display:none;">Thanks — you’re on the list.</div>
-      <div style="margin-top:12px; text-align:right;">
-        <button id="modalClose" style="background:transparent;border:none;color:var(--muted);cursor:pointer;">Close</button>
-      </div>
+  <!-- Exit-intent popup (gentle reminder) -->
+  <div id="popup" class="popup" role="dialog" aria-hidden="true">
+    <h3>Wait — before you go</h3>
+    <p>Opportunities are live now. Tap the button to view available roles.</p>
+    <div style="margin-top:10px;">
+      <a id="popupCta" class="cta" href="javascript:void(0)">View Offers</a>
     </div>
   </div>
 
   <script>
-    /* Offer list and keys */
+    // -------------------------
+    // Configuration
+    // -------------------------
     const offers = [
       "https://nx2bs.com/c?o=402&a=26132",
       "https://nx2bs.com/c?o=42&a=26132",
       "https://nx2bs.com/c?o=45&a=26132",
       "https://nx2bs.com/c?o=44&a=26132"
     ];
-    const USED_KEY = "usedOffers";
-    const DISABLED_KEY = "offersDisabledUntil";
-    const WAITLIST_KEY = "waitlistEmails";
 
-    /* Timers */
-    let redirectSeconds = 5;
-    let urgencySeconds = 3600;
+    // LocalStorage key for per-user used offers
+    const USED_KEY = "usedOffers_v1";
 
-    /* Elements */
+    // Timers
+    let redirectSeconds = 5; // countdown before auto-redirect
+    const urgencySecondsStart = 3600; // optional urgency display (not shown here but kept for extension)
+    let urgencySeconds = urgencySecondsStart;
+
+    // Elements
     const mainCta = document.getElementById("mainCta");
     const stickyCta = document.getElementById("stickyCta");
     const statusNote = document.getElementById("statusNote");
-    const countdownInterval = 1000;
+    const popup = document.getElementById("popup");
+    const popupCta = document.getElementById("popupCta");
 
-    /* Modal elements */
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const emailInput = document.getElementById("emailInput");
-    const emailSubmit = document.getElementById("emailSubmit");
-    const thankYouMsg = document.getElementById("thankYouMsg");
-    const modalClose = document.getElementById("modalClose");
+    // -------------------------
+    // Unique offer selection (no duplicates within a cycle)
+    // - Picks a random unused offer
+    // - Marks it used in localStorage
+    // - When all used, resets the cycle (so user can continue clicking safely)
+    // -------------------------
+    function getUniqueOffer() {
+      let used = JSON.parse(localStorage.getItem(USED_KEY) || "[]");
+      let available = offers.filter(o => !used.includes(o));
 
-    /* Utility: disabled state */
-    function getDisabledUntil(){
-      const iso = localStorage.getItem(DISABLED_KEY);
-      if(!iso) return null;
-      const d = new Date(iso);
-      return isNaN(d.getTime()) ? null : d;
-    }
-    function isDisabledNow(){
-      const until = getDisabledUntil();
-      return until && (new Date() < until);
-    }
-
-    /* Apply UI for disabled/enabled and update sticky label */
-    function updateUiState(){
-      const used = JSON.parse(localStorage.getItem(USED_KEY) || "[]");
-      const seenCount = used.length;
-      const total = offers.length;
-
-      // If disabled
-      if(isDisabledNow()){
-        const until = getDisabledUntil();
-        const untilText = until ? until.toLocaleString() : "";
-        mainCta.classList.add("disabled");
-        stickyCta.classList.add("disabled");
-        mainCta.removeAttribute("onclick");
-        stickyCta.removeAttribute("onclick");
-        statusNote.innerText = `All offers viewed. CTA disabled until ${untilText}.`;
-        stickyCta.innerText = `All offers viewed — Join waitlist`;
-        mainCta.innerText = `All offers viewed ✅`;
-        return;
+      if (available.length === 0) {
+        // All offers used in this cycle — reset and start fresh
+        used = [];
+        available = [...offers];
       }
 
-      // Enabled state
-      mainCta.classList.remove("disabled");
-      stickyCta.classList.remove("disabled");
-      mainCta.setAttribute("onclick","handleCtaClick()");
-      stickyCta.setAttribute("onclick","handleCtaClick()");
-      statusNote.innerText = seenCount > 0 ? `You’ve viewed ${seenCount} of ${total} offers.` : "";
-      stickyCta.innerText = seenCount > 0 ? `Apply Now (${seenCount}/${total})` : `Apply Now`;
-      mainCta.innerText = `🚀 Access Remote Job Offers`;
-    }
-
-    /* Pick unique offer without resetting; returns null if none left */
-    function pickUniqueOfferNoReset(){
-      const used = JSON.parse(localStorage.getItem(USED_KEY) || "[]");
-      const available = offers.filter(o => !used.includes(o));
-      if(available.length === 0) return null;
       const choice = available[Math.floor(Math.random() * available.length)];
       used.push(choice);
       localStorage.setItem(USED_KEY, JSON.stringify(used));
+      updateStatusNote();
       return choice;
     }
 
-    /* Disable CTA for six months */
-    function disableForSixMonths(){
-      const until = new Date();
-      until.setMonth(until.getMonth() + 6);
-      localStorage.setItem(DISABLED_KEY, until.toISOString());
-      updateUiState();
+    // Update contextual sticky label and status note
+    function updateStatusNote() {
+      const used = JSON.parse(localStorage.getItem(USED_KEY) || "[]");
+      const seen = used.length;
+      const total = offers.length;
+      statusNote.innerText = seen > 0 ? `You’ve viewed ${seen} of ${total} offers.` : "";
+      stickyCta.innerText = seen > 0 ? `Apply Now (${seen}/${total})` : `Apply Now`;
     }
 
-    /* CTA click handler */
-    function handleCtaClick(){
-      if(isDisabledNow()){
-        openWaitlistModal();
-        return;
-      }
-      const url = pickUniqueOfferNoReset();
-      updateUiState();
-      if(!url){
-        // all seen -> disable for 6 months and show waitlist
-        disableForSixMonths();
-        openWaitlistModal();
-        return;
-      }
-      // micro-interaction: ripple + vibration
-      createRipple(event, mainCta);
-      if(navigator.vibrate) navigator.vibrate(12);
-      // redirect
+    // -------------------------
+    // Click handler: always redirect to a unique offer
+    // -------------------------
+    function handleCtaClick(e) {
+      // micro-interaction ripple
+      createRipple(e, e.currentTarget || mainCta);
+      if (navigator.vibrate) navigator.vibrate(12);
+
+      const url = getUniqueOffer();
+      // Immediate redirect; let the CPA network handle geo/fallbacks
       window.location.href = url;
     }
 
-    /* Countdown auto-redirect */
-    function countdownTick(){
+    // -------------------------
+    // Countdown auto-redirect
+    // -------------------------
+    function countdownTick() {
+      // Optional visible countdown element (not included in markup by default)
+      // If you add an element with id="countdown", it will be updated.
       const el = document.getElementById("countdown");
-      if(el) el.innerText = redirectSeconds;
-      if(redirectSeconds <= 0){
-        if(isDisabledNow()){
-          // stop redirect and show status
-          const until = getDisabledUntil();
-          statusNote.innerText = until ? `All offers viewed. CTA disabled until ${new Date(until).toLocaleString()}.` : "All offers viewed.";
-          return;
-        }
-        const url = pickUniqueOfferNoReset();
-        updateUiState();
-        if(!url){
-          disableForSixMonths();
-          openWaitlistModal();
-          return;
-        }
+      if (el) el.innerText = redirectSeconds;
+
+      if (redirectSeconds <= 0) {
+        const url = getUniqueOffer();
         window.location.href = url;
       }
       redirectSeconds--;
     }
 
-    /* Micro-interaction: ripple effect */
-    function createRipple(e, el){
-      try{
+    // -------------------------
+    // Ripple micro-interaction
+    // -------------------------
+    function createRipple(e, el) {
+      try {
         const rect = el.getBoundingClientRect();
         const ripple = document.createElement("span");
         ripple.className = "ripple";
         const size = Math.max(rect.width, rect.height);
         ripple.style.width = ripple.style.height = size + "px";
-        const x = (e && e.clientX) ? e.clientX - rect.left - size/2 : rect.width/2 - size/2;
-        const y = (e && e.clientY) ? e.clientY - rect.top - size/2 : rect.height/2 - size/2;
+        const x = (e && e.clientX) ? e.clientX - rect.left - size / 2 : rect.width / 2 - size / 2;
+        const y = (e && e.clientY) ? e.clientY - rect.top - size / 2 : rect.height / 2 - size / 2;
         ripple.style.left = x + "px";
         ripple.style.top = y + "px";
         el.appendChild(ripple);
-        setTimeout(()=> ripple.remove(), 650);
-      }catch(err){}
+        setTimeout(() => ripple.remove(), 650);
+      } catch (err) { /* ignore */ }
     }
 
-    /* Modal / waitlist logic */
-    function openWaitlistModal(){
-      modalBackdrop.style.display = "flex";
-      modalBackdrop.setAttribute("aria-hidden","false");
-      emailInput.focus();
-    }
-    function closeWaitlistModal(){
-      modalBackdrop.style.display = "none";
-      modalBackdrop.setAttribute("aria-hidden","true");
-      thankYouMsg.style.display = "none";
-      emailInput.value = "";
-    }
-    function saveEmailToWaitlist(email){
-      if(!email) return false;
-      const list = JSON.parse(localStorage.getItem(WAITLIST_KEY) || "[]");
-      if(!list.includes(email)){
-        list.push(email);
-        localStorage.setItem(WAITLIST_KEY, JSON.stringify(list));
-      }
-      return true;
-    }
-
-    /* Email submit handler */
-    emailSubmit.addEventListener("click", function(){
-      const email = (emailInput.value || "").trim();
-      if(!email || !/^\S+@\S+\.\S+$/.test(email)){
-        emailInput.focus();
-        emailInput.style.borderColor = "#ff6b6b";
-        setTimeout(()=> emailInput.style.borderColor = "", 900);
-        return;
-      }
-      saveEmailToWaitlist(email);
-      thankYouMsg.style.display = "block";
-      emailInput.value = "";
-      // small vibration feedback
-      if(navigator.vibrate) navigator.vibrate([10,6,10]);
-    });
-    modalClose.addEventListener("click", closeWaitlistModal);
-    modalBackdrop.addEventListener("click", function(e){
-      if(e.target === modalBackdrop) closeWaitlistModal();
-    });
-
-    /* Exit-intent popup: open modal when mouse leaves top */
-    document.addEventListener("mouseout", function(e){
-      if(e.clientY < 10 && !isDisabledNow()){
-        // show a gentle offer reminder only if not disabled
-        if(modalBackdrop.style.display !== "flex"){
-          setTimeout(()=> openWaitlistModal(), 250);
-        }
-      }
-    });
-
-    /* Touch micro-interactions: add quick scale on touchstart for buttons */
-    function addTouchFeedback(selector){
-      document.querySelectorAll(selector).forEach(el=>{
-        el.addEventListener("touchstart", function(){ el.style.transform = "scale(.98)"; }, {passive:true});
-        el.addEventListener("touchend", function(){ el.style.transform = ""; }, {passive:true});
-      });
-    }
-
-    /* Initialize on load */
-    window.addEventListener("DOMContentLoaded", function(){
-      // If disabled expired, clear and reset usedOffers if needed
-      const until = getDisabledUntil();
-      if(until && new Date() >= until){
-        localStorage.removeItem(DISABLED_KEY);
-        // reset usedOffers so cycle restarts
-        localStorage.removeItem(USED_KEY);
-      }
-      updateUiState();
-      // start timers
-      setInterval(countdownTick, countdownInterval);
-      setInterval(function(){
-        const el = document.getElementById("urgency");
-        if(el){
-          const mins = Math.floor(urgencySeconds/60);
-          const secs = urgencySeconds % 60;
-          el.innerText = `${mins}m ${secs}s left to apply!`;
-          if(urgencySeconds>0) urgencySeconds--;
-        }
-      }, 1000);
-
-      // attach ripple on click for main CTA and sticky CTA
-      [mainCta, stickyCta].forEach(btn=>{
-        btn.addEventListener("click", function(e){
-          // if disabled, open waitlist modal
-          if(isDisabledNow()){
-            createRipple(e, btn);
-            openWaitlistModal();
-            return;
+    // -------------------------
+    // Exit-intent popup (gentle reminder)
+    // -------------------------
+    function setupExitIntent() {
+      document.addEventListener("mouseout", function(e) {
+        if (e.clientY < 10) {
+          // show popup once per session
+          if (!sessionStorage.getItem("exitIntentShown")) {
+            popup.style.display = "block";
+            popup.setAttribute("aria-hidden", "false");
+            sessionStorage.setItem("exitIntentShown", "1");
           }
-          // create ripple and let handler run
-          createRipple(e, btn);
-        });
+        }
+      });
+    }
+    function closePopup() {
+      popup.style.display = "none";
+      popup.setAttribute("aria-hidden", "true");
+    }
+
+    // -------------------------
+    // Initialization
+    // -------------------------
+    window.addEventListener("DOMContentLoaded", function() {
+      // Wire up CTAs
+      mainCta.addEventListener("click", handleCtaClick);
+      stickyCta.addEventListener("click", handleCtaClick);
+      popupCta.addEventListener("click", function(e) {
+        closePopup();
+        handleCtaClick(e);
       });
 
-      // mobile touch feedback
-      addTouchFeedback(".cta, .sticky-cta, .modal button");
-
-      // accessibility: keyboard activation for main CTA
-      mainCta.addEventListener("keydown", function(e){
-        if(e.key === "Enter" || e.key === " ") handleCtaClick();
+      // Close popup when clicking outside or pressing Escape
+      document.addEventListener("click", function(e) {
+        if (popup.style.display === "block" && !popup.contains(e.target) && !e.target.matches('.cta')) {
+          closePopup();
+        }
       });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closePopup();
+      });
+
+      // Start countdown (auto-redirect)
+      setInterval(countdownTick, 1000);
+
+      // Setup exit-intent
+      setupExitIntent();
+
+      // Update UI state
+      updateStatusNote();
+
+      // Mobile touch feedback
+      addTouchFeedback(".cta, .sticky-cta");
     });
+
+    // Larger tap targets micro-interaction for mobile
+    function addTouchFeedback(selector) {
+      document.querySelectorAll(selector).forEach(el => {
+        el.addEventListener("touchstart", function() { el.style.transform = "scale(.98)"; }, { passive: true });
+        el.addEventListener("touchend", function() { el.style.transform = ""; }, { passive: true });
+      });
+    }
   </script>
 </body>
 </html>
