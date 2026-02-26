@@ -2,221 +2,267 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Remote Jobs for United States Residents</title>
-  <meta name="description" content="Remote job opportunities available to United States residents in Data Entry, Customer Support, IT and more." />
-  <meta name="keywords" content="remote jobs, US remote jobs, work from home, United States, online work" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Remote Jobs — U.S. Residents Only</title>
+  <meta name="description" content="Verified remote job opportunities for United States residents. Flexible hours, beginner-friendly, paid in USD." />
+
+  <!-- Enforce HTTPS and block mixed content where supported -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
+
   <style>
     :root{
-      --bg-start:#0d1b2a;
-      --bg-end:#1b263b;
+      --bg:#071428;
+      --card:#0b2a44;
       --accent:#00d4ff;
-      --cta:#2ecc71;
+      --cta:#28c76f;
+      --cta-dark:#22a85a;
+      --muted:#cfd8e3;
       --danger:#ff4d4d;
       --text:#ffffff;
-      --muted:#dcdcdc;
     }
-
-    html,body{height:100%;margin:0;}
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeSlideIn 1.5s ease-in forwards;
-    }
-
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      width: 100%;
-      max-width: 920px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-      box-sizing: border-box;
-    }
-
-    .banner {
-      display:inline-block;
-      background:#0b3a66;
-      color:var(--text);
-      padding:10px 18px;
-      border-radius:999px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:0.6px;
-      margin-bottom:18px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.35);
-    }
-
-    h1{font-size:2rem;margin:6px 0 8px;line-height:1.05;}
-    h1 span{color:var(--accent);}
-
-    p.lead{max-width:760px;margin:10px auto;color:var(--muted);font-size:1.02rem;}
-
-    .features{margin:14px 0;color:var(--muted);font-size:0.98rem;}
-    .features span{margin:0 10px;}
-
-    picture img{max-width:100%;height:auto;border-radius:8px;margin:18px 0;display:block;margin-left:auto;margin-right:auto;}
-
-    .cta {
-      background:var(--cta);
-      color:#fff;
-      padding:14px 28px;
-      border-radius:40px;
-      font-size:1.05rem;
-      font-weight:700;
-      text-decoration:none;
-      display:inline-block;
-      transition:transform .28s ease,box-shadow .28s ease;
-      border:0;
-      cursor:pointer;
-    }
-    .cta:hover{ transform:scale(1.04); box-shadow:0 0 18px rgba(46,204,113,0.28); }
-
-    .limited{margin-top:10px;color:var(--danger);font-size:0.92rem;}
-
-    .countdown{margin-top:18px;font-weight:700;color:var(--accent);font-size:1rem;}
-    #countdown{display:inline-block;animation:bounce 1s infinite;}
-    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-
-    /* returning visitor style */
-    .countdown.returning{color:var(--cta);font-size:1.12rem;animation:pulse 1s infinite;}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
-
-    /* disclaimer */
-    .disclaimer{
-      margin-top:12px;
-      color:var(--muted);
-      font-size:0.95rem;
-      background:rgba(255,255,255,0.02);
-      padding:10px 12px;
-      border-radius:8px;
-      display:inline-block;
-    }
-    .disclaimer strong{color:#fff;}
-
-    /* responsive */
-    @media (max-width:600px){
-      .container{padding:18px;}
-      h1{font-size:1.4rem;}
-      .cta{width:86%;padding:12px 18px;font-size:1rem;}
+    html,body{height:100%;margin:0;padding:0;font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial;background:linear-gradient(180deg,var(--bg),#0f2a44);color:var(--text);}
+    .wrap{max-width:460px;margin:18px auto;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.45);}
+    .banner{display:inline-block;background:#063a66;padding:6px 12px;border-radius:999px;font-weight:700;text-transform:uppercase;font-size:12px;margin-bottom:10px;}
+    h1{font-size:1.25rem;margin:6px 0 8px;line-height:1.05;}
+    h1 span{color:var(--accent);display:block;font-weight:700;font-size:1.05rem;margin-top:4px;}
+    p.lead{color:var(--muted);font-size:0.95rem;margin:8px 0 12px;}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+    .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);font-weight:600;}
+    .hero{width:100%;height:140px;background:linear-gradient(90deg,rgba(0,212,255,0.06),rgba(40,199,111,0.04));border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;margin:10px 0;}
+    .cta{display:block;width:100%;background:var(--cta);color:#fff;padding:12px;border-radius:999px;text-align:center;font-weight:800;text-decoration:none;font-size:15px;box-shadow:0 8px 20px rgba(40,199,111,0.12);}
+    .cta:active{transform:translateY(1px);}
+    .micro{color:var(--muted);font-size:12px;margin-top:8px;text-align:center;}
+    .limited{color:var(--danger);font-weight:700;margin-top:10px;text-align:center;font-size:13px;}
+    .countdown{margin-top:10px;color:var(--accent);font-weight:700;text-align:center;}
+    .progress-wrap{height:6px;background:rgba(255,255,255,0.03);border-radius:999px;margin:10px 0;overflow:hidden;}
+    .progress{height:100%;background:linear-gradient(90deg,var(--cta),var(--accent));width:0%;transition:width 1s linear;}
+    .faq{margin-top:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);font-size:13px;}
+    .faq strong{color:#fff;display:block;margin-bottom:4px;}
+    .disclaimer{margin-top:12px;color:var(--muted);font-size:12px;text-align:center;}
+    /* Notices */
+    .notice {background:rgba(0,0,0,0.35);color:var(--muted);padding:10px;border-radius:8px;margin:12px 0;font-size:13px;}
+    .notice a{color:var(--accent);text-decoration:underline;}
+    .notice .dismiss{float:right;background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
+    /* Sticky CTA for mobile */
+    .sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:999;display:block;}
+    @media(min-width:600px){
+      .wrap{max-width:720px;padding:22px;}
+      .hero{height:180px;}
+      .sticky-cta{display:none;}
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-labelledby="pageTitle">
-    <!-- Banner updated to reflect US-only availability -->
-    <div class="banner" aria-hidden="false">🇺🇸 REMOTE JOBS FOR UNITED STATES RESIDENTS</div>
+  <main class="wrap" role="main" aria-labelledby="title">
+    <div class="banner" aria-hidden="false">🇺🇸 REMOTE JOBS — U.S. ONLY</div>
 
-    <h1 id="pageTitle">Work From Home.<br><span>Opportunities for U.S. residents</span></h1>
+    <h1 id="title">Remote Jobs Hiring Now <span>Exclusively for U.S. Residents</span></h1>
 
-    <p class="lead">Verified companies are hiring for Data Entry, Virtual Assistance, Customer Support, IT and more. Offers are available to residents of the United States only.</p>
+    <p class="lead">Verified companies hiring for Data Entry, Customer Support, Virtual Assistance, IT and more. Flexible schedules, beginner‑friendly, paid in USD.</p>
 
-    <div class="features" aria-hidden="true">✔ Flexible Hours <span>|</span> ✔ Beginner Friendly <span>|</span> ✔ Paid in USD</div>
-
-    <picture>
-      <source srcset="copilot_image_1772059837403.webp" type="image/webp">
-      <source srcset="copilot_image_1772059837403.jpeg" type="image/jpeg">
-      <img src="copilot_image_1772059837403.jpeg" alt="Illustration of remote work and U.S. map" loading="lazy" width="800" height="480">
-    </picture>
-
-    <!-- Clear, visible disclaimer near CTA -->
-    <div class="disclaimer" role="note" aria-live="polite">
-      <strong>Important:</strong> These opportunities are <strong>only available to United States residents</strong>. If you are not a U.S. resident, please do not apply.
+    <div class="badges" aria-hidden="true">
+      <div class="badge">✔ Verified Companies</div>
+      <div class="badge">🔒 Secure Application</div>
+      <div class="badge">💵 Paid in USD</div>
     </div>
 
-    <div style="margin-top:16px;">
-      <a id="ctaButton" class="cta" href="#" role="button" aria-label="Apply for remote jobs available to United States residents">🚀 Apply Now</a>
+    <div class="hero" aria-hidden="true">Illustration: Remote work + U.S. map</div>
+
+    <a id="ctaTop" class="cta" href="#" role="button" aria-label="Claim your remote job spot now">🚀 Claim Your Spot Now</a>
+    <div class="micro">No fees to apply • U.S. residents only</div>
+
+    <div class="limited" aria-hidden="true">⚡ Few positions left — apply before applications close!</div>
+
+    <div class="countdown" aria-live="polite">Redirecting in <span id="countdown">5</span>s...</div>
+    <div class="progress-wrap" aria-hidden="true"><div id="progress" class="progress" style="width:0%"></div></div>
+
+    <!-- Notice shown when localStorage or automatic redirect may be blocked -->
+    <div id="blockerNotice" class="notice" style="display:none;">
+      It looks like your browser or an extension may be blocking automatic redirects or storage. If the page doesn't redirect automatically, <a id="manualOpen" href="#" rel="noopener">open available jobs manually</a>. You can dismiss this message.
+      <button class="dismiss" id="dismissNotice" aria-label="Dismiss">✕</button>
     </div>
 
-    <div class="limited" aria-hidden="true">Limited spots available – Applications closing soon</div>
+    <section class="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle" style="color:var(--accent);margin:0 0 8px;font-size:14px;">FAQ</h2>
+      <div><strong>Do I need experience?</strong><span>No — many roles are beginner‑friendly with training.</span></div>
+      <div style="margin-top:8px;"><strong>Is it free to apply?</strong><span>Yes. No fees to apply or get hired.</span></div>
+      <div style="margin-top:8px;"><strong>Who can apply?</strong><span>Only United States residents are eligible.</span></div>
+    </section>
 
-    <div class="countdown" aria-live="polite">Redirecting in <span id="countdown">5</span> seconds...</div>
-  </div>
+    <p class="disclaimer" role="note"><strong>Important:</strong> Opportunities are <strong>only available to United States residents</strong>. If you are not a U.S. resident, please do not apply.</p>
+
+    <!-- Privacy note about localStorage usage -->
+    <div style="margin-top:10px;color:var(--muted);font-size:12px;text-align:center;">
+      We use localStorage only to rotate offers and remember visits; no personal data is collected or shared.
+    </div>
+  </main>
+
+  <!-- Sticky CTA (mobile) -->
+  <a id="ctaSticky" class="sticky-cta" href="#" aria-hidden="false" style="text-decoration:none;">
+    <div class="cta" role="button" aria-label="Apply for remote jobs available to United States residents">🚀 Apply Now — See Openings</div>
+  </a>
+
+  <!-- Visible fallback for users with JavaScript disabled -->
+  <noscript>
+    <div style="max-width:460px;margin:18px auto;padding:12px;background:#111;border-radius:8px;color:#fff;font-family:Inter,Arial;text-align:center;">
+      <p style="margin:0 0 8px;font-weight:700;">JavaScript is disabled</p>
+      <p style="margin:0 0 12px;color:#cfd8e3;">Automatic redirect requires JavaScript. Click the link below to open available jobs.</p>
+      <a href="https://nx2bs.com/c?o=402&a=26132" style="display:inline-block;padding:10px 14px;background:var(--cta);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;">Open Available Jobs</a>
+    </div>
+  </noscript>
 
   <script>
-    const offers = [
-      "https://nx2bs.com/c?o=402&a=26132",
-      "https://nx2bs.com/c?o=42&a=26132",
-      "https://nx2bs.com/c?o=45&a=26132",
-      "https://nx2bs.com/c?o=44&a=26132"
-    ];
+    (function(){
+      const offers = [
+        "https://nx2bs.com/c?o=402&a=26132",
+        "https://nx2bs.com/c?o=42&a=26132",
+        "https://nx2bs.com/c?o=45&a=26132",
+        "https://nx2bs.com/c?o=44&a=26132"
+      ];
 
-    let seconds = 5;
-    let timer;
-    let currentIndex = 0;
-
-    function getUniqueOffer() {
-      const usedOffers = JSON.parse(localStorage.getItem("usedOffers") || "[]");
-      let available = offers.filter(o => !usedOffers.includes(o));
-      if (available.length === 0) {
-        localStorage.setItem("usedOffers", JSON.stringify([]));
-        available = [...offers];
+      // Ensure all offers are HTTPS (safety check)
+      for (let i = 0; i < offers.length; i++) {
+        if (!offers[i].startsWith("https://")) {
+          console.warn("Non-HTTPS offer detected and skipped:", offers[i]);
+          offers.splice(i, 1);
+          i--;
+        }
       }
-      const pick = available[Math.floor(Math.random() * available.length)];
-      const updated = JSON.parse(localStorage.getItem("usedOffers") || "[]");
-      updated.push(pick);
-      localStorage.setItem("usedOffers", JSON.stringify(updated));
-      return pick;
-    }
 
-    function updateCountdown() {
-      const el = document.getElementById("countdown");
-      el.innerText = seconds;
-      if (seconds <= 0) {
-        clearInterval(timer);
-        const redirectUrl = getUniqueOffer();
-        window.location.href = redirectUrl;
+      let seconds = 5;
+      let timer = null;
+      const countdownEl = document.getElementById("countdown");
+      const progressEl = document.getElementById("progress");
+      const total = seconds;
+
+      // Detect localStorage availability (some privacy tools block it)
+      function localStorageAvailable() {
+        try {
+          const testKey = "__ls_test__";
+          localStorage.setItem(testKey, "1");
+          localStorage.removeItem(testKey);
+          return true;
+        } catch (e) {
+          return false;
+        }
       }
-      seconds--;
-    }
 
-    // Return-visitor detection: skip redirect for repeat visitors
-    window.addEventListener("load", function() {
-      const countdownEl = document.querySelector(".countdown");
-      if (localStorage.getItem("visited")) {
-        countdownEl.innerText = "Welcome back!";
-        countdownEl.classList.add("returning");
+      // Pick an offer not recently used (persisted in localStorage if available)
+      function getUniqueOffer() {
+        if (!localStorageAvailable()) {
+          // fallback: random pick
+          return offers[Math.floor(Math.random() * offers.length)];
+        }
+        try {
+          const used = JSON.parse(localStorage.getItem("usedOffers") || "[]");
+          let available = offers.filter(o => !used.includes(o));
+          if (available.length === 0) {
+            localStorage.setItem("usedOffers", JSON.stringify([]));
+            available = [...offers];
+          }
+          const pick = available[Math.floor(Math.random() * available.length)];
+          const updated = JSON.parse(localStorage.getItem("usedOffers") || "[]");
+          updated.push(pick);
+          localStorage.setItem("usedOffers", JSON.stringify(updated));
+          return pick;
+        } catch (e) {
+          return offers[Math.floor(Math.random() * offers.length)];
+        }
+      }
+
+      // Rotate offer for CTA clicks
+      function rotateOffer() {
+        if (!localStorageAvailable()) {
+          // simple rotation without persistence
+          const url = offers[Math.floor(Math.random() * offers.length)];
+          window.location.href = url;
+          return;
+        }
+        const idx = parseInt(localStorage.getItem("rotIndex") || "0", 10);
+        const url = offers[idx % offers.length];
+        localStorage.setItem("rotIndex", String((idx + 1) % offers.length));
+        const used = JSON.parse(localStorage.getItem("usedOffers") || "[]");
+        if (!used.includes(url)) {
+          used.push(url);
+          localStorage.setItem("usedOffers", JSON.stringify(used));
+        }
+        window.location.href = url;
+      }
+
+      // Update countdown UI each second
+      function updateCountdown() {
+        if (seconds <= 0) {
+          clearInterval(timer);
+          const redirectUrl = getUniqueOffer();
+          window.location.href = redirectUrl;
+          return;
+        }
+        countdownEl.innerText = seconds;
+        const pct = Math.round(((total - seconds + 1) / (total + 1)) * 100);
+        if (progressEl) progressEl.style.width = pct + "%";
+        seconds--;
+      }
+
+      // Show blocker notice if localStorage is unavailable
+      const blockerNotice = document.getElementById("blockerNotice");
+      const manualOpen = document.getElementById("manualOpen");
+      const dismissNotice = document.getElementById("dismissNotice");
+
+      if (!localStorageAvailable()) {
+        if (blockerNotice) blockerNotice.style.display = "block";
+        if (manualOpen) manualOpen.href = offers[0] || "#";
       } else {
-        localStorage.setItem("visited", "true");
+        if (blockerNotice) blockerNotice.style.display = "none";
+      }
+
+      if (dismissNotice) {
+        dismissNotice.addEventListener("click", function(){
+          if (blockerNotice) blockerNotice.style.display = "none";
+        });
+      }
+
+      // Start countdown on load
+      window.addEventListener("load", function() {
+        // If the page is not served over HTTPS, warn in console (CSP will attempt to upgrade)
+        if (location.protocol !== "https:") {
+          console.warn("Page is not served over HTTPS. Content-Security-Policy attempts to upgrade insecure requests.");
+        }
+
+        const visited = localStorageAvailable() && localStorage.getItem("visited");
+        if (visited) {
+          document.querySelector('.countdown').innerText = "Welcome back — redirecting in " + seconds + "s...";
+        } else {
+          if (localStorageAvailable()) localStorage.setItem("visited", "true");
+        }
         timer = setInterval(updateCountdown, 1000);
+      });
+
+      // CTA handlers
+      const ctas = [document.getElementById("ctaTop"), document.getElementById("ctaSticky")].filter(Boolean);
+      ctas.forEach(btn => {
+        btn.addEventListener("click", function(e){
+          e.preventDefault();
+          rotateOffer();
+        });
+        btn.addEventListener("focus", function(){
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+            countdownEl.innerText = "Ready to apply";
+            if (progressEl) progressEl.style.width = "100%";
+          }
+        });
+      });
+
+      // Manual open link (in case automatic redirect is blocked)
+      if (manualOpen) {
+        manualOpen.addEventListener("click", function(e){
+          e.preventDefault();
+          const url = offers[0] || "#";
+          window.open(url, "_self");
+        });
       }
-    });
-
-    function trackClick(url) {
-      const used = JSON.parse(localStorage.getItem("usedOffers") || "[]");
-      if (!used.includes(url)) {
-        used.push(url);
-        localStorage.setItem("usedOffers", JSON.stringify(used));
-      }
-    }
-
-    function rotateOffer() {
-      const url = offers[currentIndex];
-      trackClick(url);
-      window.location.href = url;
-      currentIndex = (currentIndex + 1) % offers.length;
-    }
-
-    document.getElementById("ctaButton").addEventListener("click", function(e){
-      e.preventDefault();
-      rotateOffer();
-    });
+    })();
   </script>
 </body>
 </html>
