@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Global Remote Jobs</title>
+  <meta name="description" content="Find verified global remote jobs in data entry, IT, customer support, and more. Work from anywhere and earn in USD.">
+  <meta name="keywords" content="remote jobs, work from home, global jobs, online work, USD earnings">
   <style>
     body {
       margin: 0;
@@ -16,7 +18,16 @@
       justify-content: center;
       height: 100vh;
       text-align: center;
+      opacity: 0; /* start invisible */
+      transform: translateY(20px); /* start slightly lower */
+      animation: fadeSlideIn 1.5s ease-in forwards; /* fade + slide animation */
     }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .banner {
       background: #1e3c72;
       padding: 10px 20px;
@@ -56,10 +67,11 @@
       text-decoration: none;
       display: inline-block;
       margin: 10px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .cta:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 15px #2ecc71; /* glow effect */
     }
     .limited {
       margin-top: 10px;
@@ -72,7 +84,72 @@
       font-weight: bold;
       color: #00d4ff;
     }
+    /* Returning visitor style */
+    .countdown.returning {
+      color: #2ecc71;
+      font-size: 1.2rem;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    /* Countdown number animation */
+    #countdown {
+      display: inline-block;
+      animation: bounce 1s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      p { font-size: 1rem; }
+      .cta { 
+        padding: 10px 20px; 
+        font-size: 1rem; 
+        width: 80%; 
+        margin: 10px auto; 
+        display: block; 
+      }
+      img { width: 100%; height: auto; }
+    }
   </style>
+</head>
+<body>
+  <div class="banner">🌍 GLOBAL REMOTE JOBS NOW HIRING</div>
+  <main>
+    <h1>Work From Anywhere.<br><span>Earn in USD.</span></h1>
+    <p>Verified international companies are hiring for Data Entry, Virtual Assistance, Customer Support, IT & more.</p>
+    <div class="features">✔ Flexible Hours <span>|</span> ✔ Beginner Friendly <span>|</span> ✔ Global Opportunities</div>
+
+    <!-- Optimized image with WebP + lazy loading -->
+    <picture>
+      <source srcset="copilot_image_1772059837403.webp" type="image/webp">
+      <source srcset="copilot_image_1772059837403.jpeg" type="image/jpeg">
+      <img src="copilot_image_1772059837403.jpeg" 
+           alt="Illustration of global remote job opportunities" 
+           loading="lazy" 
+           width="600" 
+           height="400">
+    </picture>
+
+    <!-- Single Rotating CTA Button -->
+    <a id="ctaButton" 
+       href="#" 
+       class="cta" 
+       role="button" 
+       aria-label="Apply for global remote jobs">
+       🚀 Apply Now
+    </a>
+
+    <div class="limited">Limited spots available – Applications closing soon</div>
+    <div class="countdown">Redirecting in <span id="countdown">5</span> seconds...</div>
+  </main>
+
   <script>
     const offers = [
       "https://nx2bs.com/c?o=402&a=26132",
@@ -82,13 +159,14 @@
     ];
 
     let seconds = 5;
+    let timer;
+    let currentIndex = 0;
 
     function getUniqueOffer() {
       let usedOffers = JSON.parse(localStorage.getItem("usedOffers")) || [];
       let availableOffers = offers.filter(o => !usedOffers.includes(o));
 
       if (availableOffers.length === 0) {
-        // Reset if all offers have been used
         usedOffers = [];
         availableOffers = [...offers];
       }
@@ -101,16 +179,28 @@
 
     function updateCountdown() {
       document.getElementById("countdown").innerText = seconds;
-      if (seconds === 0) {
+      if (seconds <= 0) {
+        clearInterval(timer);
         const redirectUrl = getUniqueOffer();
         window.location.href = redirectUrl;
       }
       seconds--;
     }
 
-    setInterval(updateCountdown, 1000);
+    // Detect return visitors
+    window.onload = function() {
+      if (localStorage.getItem("visited")) {
+        // Skip countdown for return visitors
+        const countdownEl = document.querySelector(".countdown");
+        countdownEl.innerText = "Welcome back!";
+        countdownEl.classList.add("returning");
+      } else {
+        // First‑time visitor: set flag and start countdown
+        localStorage.setItem("visited", "true");
+        timer = setInterval(updateCountdown, 1000);
+      }
+    };
 
-    // Track manual CTA clicks as "used"
     function trackClick(url) {
       let usedOffers = JSON.parse(localStorage.getItem("usedOffers")) || [];
       if (!usedOffers.includes(url)) {
@@ -118,32 +208,18 @@
         localStorage.setItem("usedOffers", JSON.stringify(usedOffers));
       }
     }
+
+    function rotateOffer() {
+      const url = offers[currentIndex];
+      trackClick(url);
+      window.location.href = url;
+      currentIndex = (currentIndex + 1) % offers.length;
+    }
+
+    document.getElementById("ctaButton").addEventListener("click", function(e) {
+      e.preventDefault();
+      rotateOffer();
+    });
   </script>
-</head>
-<body>
-  <div class="banner">🌍 GLOBAL REMOTE JOBS NOW HIRING</div>
-  <h1>Work From Anywhere.<br><span>Earn in USD.</span></h1>
-  <p>Verified international companies are hiring for Data Entry, Virtual Assistance, Customer Support, IT & more.</p>
-  <div class="features">✔ Flexible Hours <span>|</span> ✔ Beginner Friendly <span>|</span> ✔ Global Opportunities</div>
-
-  <!-- Optimized image with WebP + lazy loading -->
-  <picture>
-    <source srcset="copilot_image_1772059837403.webp" type="image/webp">
-    <source srcset="copilot_image_1772059837403.jpeg" type="image/jpeg">
-    <img src="copilot_image_1772059837403.jpeg" 
-         alt="Global Remote Jobs Now Hiring" 
-         loading="lazy" 
-         width="600" 
-         height="400">
-  </picture>
-
-  <!-- Multiple CTA buttons with click tracking -->
-  <a href="https://nx2bs.com/c?o=402&a=26132" class="cta" onclick="trackClick(this.href)">🚀 Offer 1</a>
-  <a href="https://nx2bs.com/c?o=42&a=26132" class="cta" onclick="trackClick(this.href)">🔥 Offer 2</a>
-  <a href="https://nx2bs.com/c?o=45&a=26132" class="cta" onclick="trackClick(this.href)">💼 Offer 3</a>
-  <a href="https://nx2bs.com/c?o=44&a=26132" class="cta" onclick="trackClick(this.href)">🌟 Offer 4</a>
-
-  <div class="limited">Limited spots available – Applications closing soon</div>
-  <div class="countdown">Redirecting in <span id="countdown">5</span> seconds...</div>
 </body>
-  </html>
+</html>
