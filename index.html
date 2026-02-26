@@ -5,20 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
   <title>Remote Jobs — U.S. Residents Only</title>
   <meta name="description" content="Verified remote job opportunities for United States residents. Flexible hours, beginner-friendly, paid in USD." />
-
-  <!-- Enforce HTTPS and block mixed content where supported -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
-
   <style>
     :root{
-      --bg:#071428;
-      --card:#0b2a44;
-      --accent:#00d4ff;
-      --cta:#28c76f;
-      --cta-dark:#22a85a;
-      --muted:#cfd8e3;
-      --danger:#ff4d4d;
-      --text:#ffffff;
+      --bg:#071428;--accent:#00d4ff;--cta:#28c76f;--cta-dark:#22a85a;
+      --muted:#cfd8e3;--danger:#ff4d4d;--text:#ffffff;
     }
     html,body{height:100%;margin:0;padding:0;font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial;background:linear-gradient(180deg,var(--bg),#0f2a44);color:var(--text);}
     .wrap{max-width:460px;margin:18px auto;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.45);}
@@ -30,7 +21,7 @@
     .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);font-weight:600;}
     .hero{width:100%;height:140px;background:linear-gradient(90deg,rgba(0,212,255,0.06),rgba(40,199,111,0.04));border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;margin:10px 0;}
     .cta{display:block;width:100%;background:var(--cta);color:#fff;padding:12px;border-radius:999px;text-align:center;font-weight:800;text-decoration:none;font-size:15px;box-shadow:0 8px 20px rgba(40,199,111,0.12);}
-    .cta:active{transform:translateY(1px);}
+    .cta:hover{background:var(--cta-dark);}
     .micro{color:var(--muted);font-size:12px;margin-top:8px;text-align:center;}
     .limited{color:var(--danger);font-weight:700;margin-top:10px;text-align:center;font-size:13px;}
     .countdown{margin-top:10px;color:var(--accent);font-weight:700;text-align:center;}
@@ -39,11 +30,9 @@
     .faq{margin-top:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);font-size:13px;}
     .faq strong{color:#fff;display:block;margin-bottom:4px;}
     .disclaimer{margin-top:12px;color:var(--muted);font-size:12px;text-align:center;}
-    /* Notices */
     .notice {background:rgba(0,0,0,0.35);color:var(--muted);padding:10px;border-radius:8px;margin:12px 0;font-size:13px;}
     .notice a{color:var(--accent);text-decoration:underline;}
     .notice .dismiss{float:right;background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
-    /* Sticky CTA for mobile */
     .sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:999;display:block;}
     @media(min-width:600px){
       .wrap{max-width:720px;padding:22px;}
@@ -56,42 +45,51 @@
   <main class="wrap" role="main" aria-labelledby="title">
     <div class="banner" aria-hidden="false">🇺🇸 REMOTE JOBS — U.S. ONLY</div>
 
-    <h1 id="title">Remote Jobs Hiring Now <span>Exclusively for U.S. Residents</span></h1>
+    <!-- Headline and subhead (updated copy) -->
+    <h1 id="title">Remote Jobs Hiring Now — U.S. Residents Only
+      <span>Verified roles. Flexible hours. Paid in USD.</span>
+    </h1>
 
-    <p class="lead">Verified companies hiring for Data Entry, Customer Support, Virtual Assistance, IT and more. Flexible schedules, beginner‑friendly, paid in USD.</p>
+    <!-- Lead paragraph (updated copy) -->
+    <p class="lead">Trusted companies are hiring now for remote, entry‑friendly roles. Work from home, set your hours, and get paid in USD — apply today.</p>
 
+    <!-- Trust badges (kept concise) -->
     <div class="badges" aria-hidden="true">
       <div class="badge">✔ Verified Companies</div>
       <div class="badge">🔒 Secure Application</div>
       <div class="badge">💵 Paid in USD</div>
     </div>
 
+    <!-- Hero placeholder (left as-is) -->
     <div class="hero" aria-hidden="true">Illustration: Remote work + U.S. map</div>
 
-    <a id="ctaTop" class="cta" href="#" role="button" aria-label="Claim your remote job spot now">🚀 Claim Your Spot Now</a>
+    <!-- Primary CTA (updated text) -->
+    <a id="ctaTop" class="cta" href="#" role="button" aria-label="Apply Now — See Openings">🚀 Apply Now — See Openings</a>
     <div class="micro">No fees to apply • U.S. residents only</div>
 
-    <div class="limited" aria-hidden="true">⚡ Few positions left — apply before applications close!</div>
+    <div class="limited" aria-hidden="true">Spots filling fast — don’t miss out.</div>
 
+    <!-- Countdown and progress (first-time visitors only) -->
     <div class="countdown" aria-live="polite">Redirecting in <span id="countdown">5</span>s...</div>
     <div class="progress-wrap" aria-hidden="true"><div id="progress" class="progress" style="width:0%"></div></div>
 
-    <!-- Notice shown when localStorage or automatic redirect may be blocked -->
+    <!-- Blocker notice and manual open -->
     <div id="blockerNotice" class="notice" style="display:none;">
-      It looks like your browser or an extension may be blocking automatic redirects or storage. If the page doesn't redirect automatically, <a id="manualOpen" href="#" rel="noopener">open available jobs manually</a>. You can dismiss this message.
-      <button class="dismiss" id="dismissNotice" aria-label="Dismiss">✕</button>
+      It looks like your browser or an extension may be blocking automatic redirects or storage. If the page doesn't redirect automatically, <a id="manualOpen" href="#" rel="noopener">open available jobs manually</a>. <button class="dismiss" id="dismissNotice" aria-label="Dismiss">✕</button>
     </div>
 
+    <!-- FAQ (tightened) -->
     <section class="faq" aria-labelledby="faqTitle">
       <h2 id="faqTitle" style="color:var(--accent);margin:0 0 8px;font-size:14px;">FAQ</h2>
-      <div><strong>Do I need experience?</strong><span>No — many roles are beginner‑friendly with training.</span></div>
-      <div style="margin-top:8px;"><strong>Is it free to apply?</strong><span>Yes. No fees to apply or get hired.</span></div>
-      <div style="margin-top:8px;"><strong>Who can apply?</strong><span>Only United States residents are eligible.</span></div>
+      <div><strong>Do I need experience?</strong><span>No — many roles include training.</span></div>
+      <div style="margin-top:8px;"><strong>Is it free to apply?</strong><span>Yes — there are no application fees.</span></div>
+      <div style="margin-top:8px;"><strong>How soon can I start?</strong><span>Most hires start within 1–2 weeks.</span></div>
+      <div style="margin-top:8px;"><strong>Who can apply?</strong><span>Only United States residents.</span></div>
     </section>
 
+    <!-- Disclaimer -->
     <p class="disclaimer" role="note"><strong>Important:</strong> Opportunities are <strong>only available to United States residents</strong>. If you are not a U.S. resident, please do not apply.</p>
 
-    <!-- Privacy note about localStorage usage -->
     <div style="margin-top:10px;color:var(--muted);font-size:12px;text-align:center;">
       We use localStorage only to rotate offers and remember visits; no personal data is collected or shared.
     </div>
@@ -99,7 +97,7 @@
 
   <!-- Sticky CTA (mobile) -->
   <a id="ctaSticky" class="sticky-cta" href="#" aria-hidden="false" style="text-decoration:none;">
-    <div class="cta" role="button" aria-label="Apply for remote jobs available to United States residents">🚀 Apply Now — See Openings</div>
+    <div class="cta" role="button" aria-label="Apply Now — See Openings">🚀 Apply Now — See Openings</div>
   </a>
 
   <!-- Visible fallback for users with JavaScript disabled -->
@@ -113,6 +111,7 @@
 
   <script>
     (function(){
+      // Offer list (HTTPS)
       const offers = [
         "https://nx2bs.com/c?o=402&a=26132",
         "https://nx2bs.com/c?o=42&a=26132",
@@ -120,13 +119,9 @@
         "https://nx2bs.com/c?o=44&a=26132"
       ];
 
-      // Ensure all offers are HTTPS (safety check)
-      for (let i = 0; i < offers.length; i++) {
-        if (!offers[i].startsWith("https://")) {
-          console.warn("Non-HTTPS offer detected and skipped:", offers[i]);
-          offers.splice(i, 1);
-          i--;
-        }
+      // Remove any non-HTTPS offers as a safety measure
+      for (let i = offers.length - 1; i >= 0; i--) {
+        if (!offers[i] || !offers[i].startsWith("https://")) offers.splice(i, 1);
       }
 
       let seconds = 5;
@@ -135,7 +130,7 @@
       const progressEl = document.getElementById("progress");
       const total = seconds;
 
-      // Detect localStorage availability (some privacy tools block it)
+      // Check localStorage availability
       function localStorageAvailable() {
         try {
           const testKey = "__ls_test__";
@@ -147,67 +142,84 @@
         }
       }
 
-      // Pick an offer not recently used (persisted in localStorage if available)
-      function getUniqueOffer() {
-        if (!localStorageAvailable()) {
-          // fallback: random pick
-          return offers[Math.floor(Math.random() * offers.length)];
-        }
+      // Return the list of used offers (array) or [] if none
+      function getUsedOffers() {
+        if (!localStorageAvailable()) return [];
         try {
-          const used = JSON.parse(localStorage.getItem("usedOffers") || "[]");
-          let available = offers.filter(o => !used.includes(o));
-          if (available.length === 0) {
-            localStorage.setItem("usedOffers", JSON.stringify([]));
-            available = [...offers];
-          }
-          const pick = available[Math.floor(Math.random() * available.length)];
-          const updated = JSON.parse(localStorage.getItem("usedOffers") || "[]");
-          updated.push(pick);
-          localStorage.setItem("usedOffers", JSON.stringify(updated));
-          return pick;
+          return JSON.parse(localStorage.getItem("usedOffers") || "[]");
         } catch (e) {
+          return [];
+        }
+      }
+
+      // Persist used offers array
+      function setUsedOffers(arr) {
+        if (!localStorageAvailable()) return;
+        try {
+          localStorage.setItem("usedOffers", JSON.stringify(arr));
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      // Pick an unused offer for this user; mark it used. If all used, reset then pick.
+      function getUniqueOffer() {
+        if (offers.length === 0) return null;
+        if (!localStorageAvailable()) {
+          // fallback: random pick without persistence
           return offers[Math.floor(Math.random() * offers.length)];
         }
+
+        let used = getUsedOffers();
+        let available = offers.filter(o => !used.includes(o));
+
+        if (available.length === 0) {
+          // Reset used list and make all offers available again
+          used = [];
+          setUsedOffers(used);
+          available = [...offers];
+        }
+
+        const pick = available[Math.floor(Math.random() * available.length)];
+        used.push(pick);
+        setUsedOffers(used);
+        return pick;
       }
 
-      // Rotate offer for CTA clicks
+      // CTA rotation uses the same unique logic
       function rotateOffer() {
-        if (!localStorageAvailable()) {
-          // simple rotation without persistence
-          const url = offers[Math.floor(Math.random() * offers.length)];
+        // Clear any running timer to avoid race conditions
+        if (timer) { clearInterval(timer); timer = null; }
+        const url = getUniqueOffer();
+        if (url) {
           window.location.href = url;
-          return;
+        } else {
+          // fallback: open first offer if something went wrong
+          window.location.href = offers[0] || "#";
         }
-        const idx = parseInt(localStorage.getItem("rotIndex") || "0", 10);
-        const url = offers[idx % offers.length];
-        localStorage.setItem("rotIndex", String((idx + 1) % offers.length));
-        const used = JSON.parse(localStorage.getItem("usedOffers") || "[]");
-        if (!used.includes(url)) {
-          used.push(url);
-          localStorage.setItem("usedOffers", JSON.stringify(used));
-        }
-        window.location.href = url;
       }
 
-      // Update countdown UI each second
+      // Countdown update for first-time visitors
       function updateCountdown() {
         if (seconds <= 0) {
           clearInterval(timer);
+          timer = null;
           const redirectUrl = getUniqueOffer();
-          window.location.href = redirectUrl;
+          if (redirectUrl) window.location.href = redirectUrl;
           return;
         }
-        countdownEl.innerText = seconds;
+        if (countdownEl) countdownEl.innerText = seconds;
         const pct = Math.round(((total - seconds + 1) / (total + 1)) * 100);
         if (progressEl) progressEl.style.width = pct + "%";
         seconds--;
       }
 
-      // Show blocker notice if localStorage is unavailable
+      // UI elements for blocker notice and manual open
       const blockerNotice = document.getElementById("blockerNotice");
       const manualOpen = document.getElementById("manualOpen");
       const dismissNotice = document.getElementById("dismissNotice");
 
+      // Show blocker notice if localStorage is unavailable
       if (!localStorageAvailable()) {
         if (blockerNotice) blockerNotice.style.display = "block";
         if (manualOpen) manualOpen.href = offers[0] || "#";
@@ -221,40 +233,54 @@
         });
       }
 
-      // Start countdown on load
+      // On load: only auto-redirect for first-time visitors
       window.addEventListener("load", function() {
-        // If the page is not served over HTTPS, warn in console (CSP will attempt to upgrade)
+        // Console warning if not HTTPS (CSP attempts to upgrade)
         if (location.protocol !== "https:") {
           console.warn("Page is not served over HTTPS. Content-Security-Policy attempts to upgrade insecure requests.");
         }
 
-        const visited = localStorageAvailable() && localStorage.getItem("visited");
+        const lsOk = localStorageAvailable();
+        const visited = lsOk && localStorage.getItem("visited");
+
         if (visited) {
-          document.querySelector('.countdown').innerText = "Welcome back — redirecting in " + seconds + "s...";
+          // Returning visitor: do NOT auto-redirect. Show CTA and friendly message.
+          const countdownWrapper = document.querySelector('.countdown');
+          if (countdownWrapper) countdownWrapper.innerText = "Welcome back — click Apply to see new openings.";
+          if (progressEl) progressEl.style.width = "100%";
         } else {
-          if (localStorageAvailable()) localStorage.setItem("visited", "true");
+          // First-time visitor: set flag and start countdown auto-redirect.
+          if (lsOk) {
+            try { localStorage.setItem("visited", "true"); } catch (e) { /* ignore */ }
+          }
+          seconds = total;
+          if (countdownEl) countdownEl.innerText = seconds;
+          if (progressEl) progressEl.style.width = "0%";
+          timer = setInterval(updateCountdown, 1000);
         }
-        timer = setInterval(updateCountdown, 1000);
       });
 
-      // CTA handlers
+      // CTA handlers: single click navigates to a unique offer
       const ctas = [document.getElementById("ctaTop"), document.getElementById("ctaSticky")].filter(Boolean);
       ctas.forEach(btn => {
         btn.addEventListener("click", function(e){
           e.preventDefault();
+          // Clear timer to avoid double navigation
+          if (timer) { clearInterval(timer); timer = null; }
           rotateOffer();
         });
         btn.addEventListener("focus", function(){
           if (timer) {
             clearInterval(timer);
             timer = null;
-            countdownEl.innerText = "Ready to apply";
+            const countdownWrapper = document.querySelector('.countdown');
+            if (countdownWrapper) countdownWrapper.innerText = "Ready to apply";
             if (progressEl) progressEl.style.width = "100%";
           }
         });
       });
 
-      // Manual open link (in case automatic redirect is blocked)
+      // Manual open link for blocker notice
       if (manualOpen) {
         manualOpen.addEventListener("click", function(e){
           e.preventDefault();
