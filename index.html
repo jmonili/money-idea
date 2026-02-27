@@ -7,7 +7,6 @@
   <meta name="description" content="Landing page connecting U.S. residents to verified remote job listings. Apply for flexible, beginner-friendly opportunities with trusted partners.">
   <style>
     :root{
-      /* Professional Blue palette */
       --primary:#0B2A4A;
       --surface:#123A5A;
       --accent:#00AEEF;
@@ -19,74 +18,32 @@
     }
 
     html,body{height:100%;margin:0;font-family:Segoe UI,Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;background:linear-gradient(180deg,var(--primary),var(--surface));color:var(--muted);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-    /* Center page and constrain width */
     .page-wrap{ display:flex; align-items:center; justify-content:center; min-height:100vh; padding:18px; box-sizing:border-box; }
-    .card{
-      width:100%;
-      max-width:920px;
-      text-align:center;           /* center inline elements like CTAs */
-      margin:0 auto;               /* center the card itself */
-      padding:var(--card-padding);
-      box-sizing:border-box;
-    }
+    .card{ width:100%; max-width:920px; text-align:center; margin:0 auto; padding:var(--card-padding); box-sizing:border-box; background:transparent; }
 
-    .banner{ display:inline-block; background:var(--surface); padding:10px 18px; border-radius:24px; font-weight:700; text-transform:uppercase; box-shadow:0 6px 18px rgba(0,0,0,0.35); margin-bottom:14px; color:#fff; }
+    .banner{ display:inline-flex; align-items:center; gap:10px; background:var(--surface); padding:10px 18px; border-radius:24px; font-weight:700; text-transform:uppercase; box-shadow:0 6px 18px rgba(0,0,0,0.35); margin-bottom:14px; color:#fff; }
+    .logo { height:28px; width:auto; display:inline-block; }
     h1{ font-size:2rem; margin:0 0 8px; color:#fff; line-height:1.15; }
     h1 span{ color:var(--accent); }
     p{ max-width:720px; margin:10px auto; color:var(--muted); line-height:1.45; font-size:1rem; word-wrap:break-word; }
-    .features{ margin:12px 0; color:var(--muted); font-size:0.95rem; }
     picture img{ max-width:100%; height:auto; border-radius:8px; display:block; margin:18px auto; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
     .limited{ color:var(--danger); margin-top:8px; font-size:0.95rem; }
 
-    /* CTA styling and centering */
-    .cta{
-      display:inline-block;
-      background:var(--cta);
-      color:#fff;
-      padding:14px 28px;
-      border-radius:40px;
-      font-weight:700;
-      text-decoration:none;
-      margin:18px auto 0 auto; /* center the button */
-      position:relative;
-      overflow:hidden;
-      transition:transform .12s ease, box-shadow .12s ease;
-      box-shadow:0 6px 18px rgba(0,0,0,0.25);
-      font-size:1rem;
-      text-align:center;
-    }
+    .cta{ display:inline-block; background:var(--cta); color:#fff; padding:14px 28px; border-radius:40px; font-weight:700; text-decoration:none; margin:18px auto 0 auto; box-shadow:0 6px 18px rgba(0,0,0,0.25); font-size:1rem; text-align:center; position:relative; overflow:hidden; }
     .cta:active{ transform:scale(.98); }
 
-    /* Sticky CTA centered at bottom */
-    .sticky-cta{
-      position:fixed;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:16px;
-      z-index:999;
-      background:var(--sticky);
-      color:#fff;
-      padding:12px 22px;
-      border-radius:28px;
-      font-weight:700;
-      box-shadow:0 8px 24px rgba(0,0,0,0.35);
-      text-decoration:none;
-      text-align:center;
-      max-width:92%;
-    }
+    .sticky-cta{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; z-index:999; background:var(--sticky); color:#fff; padding:12px 22px; border-radius:28px; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,0.35); text-decoration:none; text-align:center; max-width:92%; }
 
     .popup{ display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(8,28,44,0.98); padding:16px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.6); z-index:1000; text-align:center; width:90%; max-width:420px; color:var(--muted); }
     .popup h3{ margin:0 0 8px; color:var(--accent); }
     .popup p{ margin:0 0 12px; color:var(--muted); }
     .status-note{ margin-top:12px; color:var(--muted); font-size:0.95rem; }
 
-    /* Countdown and progress */
     @keyframes pulse { 0%{transform:scale(1);opacity:1;}50%{transform:scale(1.06);opacity:.9;}100%{transform:scale(1);opacity:1;} }
     #countdown{ margin-top:12px; font-size:1.05rem; font-weight:700; color:var(--accent); animation:pulse 1s infinite; }
     #progressBarContainer{ margin-top:8px; width:100%; max-width:420px; height:10px; background:rgba(255,255,255,0.04); border-radius:6px; overflow:hidden; margin-left:auto; margin-right:auto; box-shadow: inset 0 1px 0 rgba(255,255,255,0.02); }
     #progressBar{ height:100%; width:0%; background:linear-gradient(90deg,#2ecc71 0%, #f1c40f 33%, #e67e22 66%, #e74c3c 100%); transition:width 1s linear; transform-origin:left center; }
 
-    /* Benefits, testimonials, trust badges */
     .benefits, .testimonials, .trust-badges{ margin:24px auto; max-width:720px; text-align:left; color:var(--muted); }
     .benefits h2, .testimonials h2{ color:#fff; margin:0 0 8px; font-size:1.05rem; }
     .benefits ul{ list-style:none; padding:0; margin:8px 0 0 0; }
@@ -100,7 +57,6 @@
     .footer-links{ display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:8px; }
     .footer-links a{ color:#cfeefc; text-decoration:none; font-size:0.95rem; }
 
-    /* Accessibility and small-screen tweaks */
     @media (max-width:900px){
       h1{ font-size:1.75rem; }
       .benefits h2, .testimonials h2{ font-size:1rem; }
@@ -111,29 +67,27 @@
       .card{ padding:var(--card-padding); }
       h1{ font-size:1.4rem; }
       p{ font-size:0.95rem; }
-      .cta{
-        font-size:0.98rem;
-        padding:12px 20px;
-        border-radius:34px;
-        width:90%;
-        max-width:360px;
-        box-sizing:border-box;
-        display:block; /* full-width-ish but centered by margin */
-      }
+      .cta{ font-size:0.98rem; padding:12px 20px; border-radius:34px; width:90%; max-width:360px; box-sizing:border-box; display:block; margin-left:auto; margin-right:auto; }
       .trust-badges{ gap:10px; }
       .trust-badge{ width:100%; text-align:center; }
       .benefits, .testimonials{ text-align:left; }
-      .card{ padding-bottom:90px; } /* ensure sticky CTA doesn't overlap content */
+      .card{ padding-bottom:90px; }
       .sticky-cta{ padding:12px 20px; border-radius:34px; width:92%; max-width:420px; }
       .footer-links{ flex-direction:column; gap:6px; }
       footer{ font-size:0.88rem; padding-bottom:36px; }
+      .logo { height:22px; }
     }
   </style>
 </head>
 <body>
   <div class="page-wrap">
     <main class="card" role="main" aria-labelledby="main-heading">
-      <div class="banner">REMOTE JOBS — U.S. RESIDENTS ONLY</div>
+      <div class="banner" aria-hidden="false">
+        <!-- Placeholder logo: replace "logo.png" with your file if available -->
+        <img src="logo.png" alt="Remote Jobs Logo" class="logo" onerror="this.style.display='none'">
+        REMOTE JOBS — U.S. RESIDENTS ONLY
+      </div>
+
       <h1 id="main-heading">Work From Home.<br><span>Earn in USD.</span></h1>
       <p>Verified U.S. companies are hiring for Data Entry, Virtual Assistance, Customer Support, IT & more. This landing page connects U.S. residents to partner job listings and application pages.</p>
 
@@ -214,14 +168,18 @@
     let countdownInterval = null;
     let isRedirecting = false;
 
+    // Elements
     const mainCta = document.getElementById("mainCta");
     const stickyCta = document.getElementById("stickyCta");
+    const popupCta = document.getElementById("popupCta");
     const statusNote = document.getElementById("statusNote");
     const countdownEl = document.getElementById("countdown");
     const progressBar = document.getElementById("progressBar");
     const popup = document.getElementById("popup");
-    const popupCta = document.getElementById("popupCta");
 
+    // -------------------------
+    // Storage helpers
+    // -------------------------
     function readUsed() {
       try { return JSON.parse(localStorage.getItem(USED_KEY) || "[]"); } catch (e) { return []; }
     }
@@ -229,18 +187,27 @@
       try { localStorage.setItem(USED_KEY, JSON.stringify(arr)); } catch (e) {}
     }
 
+    // -------------------------
+    // Unique randomized offer selection (no duplicates within a cycle)
+    // -------------------------
     function getUniqueOfferRandom() {
       let used = readUsed();
       let available = offers.filter(o => !used.includes(o));
-      if (available.length === 0) { used = []; available = [...offers]; }
+      if (available.length === 0) {
+        used = [];
+        available = [...offers];
+      }
       const idx = Math.floor(Math.random() * available.length);
       const choice = available[idx];
       used.push(choice);
       writeUsed(used);
-      updateStatusNote();
+      updateStatusNote(); // keep sticky label static but update status note if needed
       return choice;
     }
 
+    // -------------------------
+    // Safe redirect helper
+    // -------------------------
     function safeRedirect(url) {
       if (isRedirecting) return;
       isRedirecting = true;
@@ -250,13 +217,18 @@
         isRedirecting = false;
         return;
       }
-      try { window.location.href = url; } catch (err) {
+      try {
+        window.location.href = url;
+      } catch (err) {
         console.error("Redirect failed:", err);
         statusNote.innerText = "Redirect blocked or failed. Please click the button to continue.";
         isRedirecting = false;
       }
     }
 
+    // -------------------------
+    // Ripple micro-interaction
+    // -------------------------
     function createRipple(e, el) {
       try {
         const rect = el.getBoundingClientRect();
@@ -265,9 +237,10 @@
         ripple.style.borderRadius = "50%";
         ripple.style.transform = "scale(0)";
         ripple.style.background = "rgba(255,255,255,0.18)";
-        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + "px";
-        const x = (e && e.clientX) ? e.clientX - rect.left - (parseFloat(ripple.style.width)/2) : rect.width/2 - (parseFloat(ripple.style.width)/2);
-        const y = (e && e.clientY) ? e.clientY - rect.top - (parseFloat(ripple.style.height)/2) : rect.height/2 - (parseFloat(ripple.style.height)/2);
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + "px";
+        const x = (e && e.clientX) ? e.clientX - rect.left - size / 2 : rect.width / 2 - size / 2;
+        const y = (e && e.clientY) ? e.clientY - rect.top - size / 2 : rect.height / 2 - size / 2;
         ripple.style.left = x + "px";
         ripple.style.top = y + "px";
         ripple.style.pointerEvents = "none";
@@ -276,19 +249,31 @@
         el.appendChild(ripple);
         requestAnimationFrame(() => { ripple.style.transform = "scale(4)"; ripple.style.opacity = "0"; });
         setTimeout(() => ripple.remove(), 650);
-      } catch (err) {}
+      } catch (err) { /* ignore */ }
     }
 
+    // -------------------------
+    // CTA click handler
+    // -------------------------
     function handleCtaClick(e) {
       const used = readUsed();
-      if (used.length > 0) statusNote.innerText = "Welcome back — taking you to the next available partner listing...";
-      else statusNote.innerText = "";
+      if (used.length > 0) {
+        // keep status note minimal; user requested no numbers on sticky CTA
+        statusNote.innerText = "";
+      } else {
+        statusNote.innerText = "";
+      }
+
       createRipple(e, e.currentTarget || mainCta);
       if (navigator.vibrate) navigator.vibrate(12);
+
       const url = getUniqueOfferRandom();
       setTimeout(() => { safeRedirect(url); }, 120);
     }
 
+    // -------------------------
+    // Countdown auto-redirect
+    // -------------------------
     function countdownTick() {
       if (!countdownEl || !progressBar) return;
       const displaySeconds = Math.max(0, redirectSeconds);
@@ -305,6 +290,9 @@
       redirectSeconds--;
     }
 
+    // -------------------------
+    // Exit-intent popup
+    // -------------------------
     function setupExitIntent() {
       document.addEventListener("mouseout", function(e) {
         if (e.clientY < 10) {
@@ -316,16 +304,25 @@
         }
       });
     }
-    function closePopup() { popup.style.display = "none"; popup.setAttribute("aria-hidden", "true"); }
-
-    function updateStatusNote() {
-      const used = readUsed();
-      const seen = used.length;
-      const total = offers.length;
-      statusNote.innerText = seen > 0 ? `You’ve viewed ${seen} of ${total} partner listings.` : "";
-      stickyCta.innerText = seen > 0 ? `Start Application (${seen}/${total})` : `Start Application`;
+    function closePopup() {
+      popup.style.display = "none";
+      popup.setAttribute("aria-hidden", "true");
     }
 
+    // -------------------------
+    // Keep sticky CTA label static (no numbers)
+    // -------------------------
+    function updateStatusNote() {
+      // Do not display counts on the sticky CTA; keep it static per request
+      stickyCta.innerText = "Start Application";
+      // Optionally keep status note empty or show a generic message
+      const used = readUsed();
+      statusNote.innerText = ""; // intentionally blank to avoid showing counts
+    }
+
+    // -------------------------
+    // Touch feedback for mobile
+    // -------------------------
     function addTouchFeedback(selector) {
       document.querySelectorAll(selector).forEach(el => {
         el.addEventListener("touchstart", function() { el.style.transform = "scale(.98)"; }, { passive: true });
@@ -333,15 +330,22 @@
       });
     }
 
+    // -------------------------
+    // Initialization
+    // -------------------------
     window.addEventListener("DOMContentLoaded", function() {
-      mainCta.addEventListener("click", handleCtaClick);
-      stickyCta.addEventListener("click", handleCtaClick);
-      popupCta.addEventListener("click", function(e) { closePopup(); handleCtaClick(e); });
+      if (mainCta) mainCta.addEventListener("click", handleCtaClick);
+      if (stickyCta) stickyCta.addEventListener("click", handleCtaClick);
+      if (popupCta) popupCta.addEventListener("click", function(e) { closePopup(); handleCtaClick(e); });
 
       document.addEventListener("click", function(e) {
-        if (popup.style.display === "block" && !popup.contains(e.target) && !e.target.matches('.cta')) closePopup();
+        if (popup.style.display === "block" && !popup.contains(e.target) && !e.target.matches('.cta')) {
+          closePopup();
+        }
       });
-      document.addEventListener("keydown", function(e) { if (e.key === "Escape") closePopup(); });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closePopup();
+      });
 
       if (countdownEl) countdownEl.innerText = `Redirecting to verified partner job listings in ${redirectSeconds} second${redirectSeconds !== 1 ? 's' : ''}...`;
       if (progressBar) progressBar.style.width = "0%";
@@ -353,4 +357,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
