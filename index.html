@@ -2,399 +2,397 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-  <title>Remote Jobs — U.S. Residents Only</title>
-  <meta name="description" content="Verified remote job opportunities for United States residents. Flexible hours, beginner-friendly, paid in USD." />
-  <meta name="keywords" content="remote jobs, work from home, online jobs USA, data entry, customer support, virtual assistant, IT support, paid in USD, beginner friendly">
-  <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
-
-  <!-- JobPosting structured data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "JobPosting",
-    "title": "Remote Data Entry / Customer Support Roles",
-    "description": "Verified companies hiring for remote, entry-level roles including Data Entry, Customer Support, Virtual Assistance, and IT Support. Flexible hours, paid in USD, beginner-friendly.",
-    "datePosted": "2026-02-27",
-    "validThrough": "2026-03-31",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Remote Jobs Network",
-      "sameAs": "https://www.yourwebsite.com",
-      "logo": "https://www.yourwebsite.com/logo.png"
-    },
-    "jobLocationType": "TELECOMMUTE",
-    "applicantLocationRequirements": {
-      "@type": "Country",
-      "name": "United States"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD",
-      "value": {
-        "@type": "QuantitativeValue",
-        "value": "15",
-        "unitText": "HOUR"
-      }
-    }
-  }
-  </script>
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Remote Jobs — U.S. Residents</title>
+  <meta name="description" content="Landing page connecting U.S. residents to verified remote job listings. Apply for flexible, beginner-friendly opportunities with trusted partners.">
   <style>
     :root{
-      --bg:#071428;--accent:#00d4ff;--cta:#28c76f;--cta-dark:#22a85a;
-      --muted:#cfd8e3;--danger:#ff4d4d;--text:#ffffff;
+      /* Professional Blue palette */
+      --primary:#0B2A4A;
+      --surface:#123A5A;
+      --accent:#00AEEF;
+      --cta:#2ECC71;
+      --muted:#BFCFE6;
+      --danger:#E74C3C;
+      --sticky:#00AEEF;
     }
-    html,body{height:100%;margin:0;padding:0;font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial;background:linear-gradient(180deg,var(--bg),#0f2a44);color:var(--text);}
-    .wrap{max-width:460px;margin:18px auto;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.45);}
-    .banner{display:inline-block;background:#063a66;padding:6px 12px;border-radius:999px;font-weight:700;text-transform:uppercase;font-size:12px;margin-bottom:10px;}
-    h1{font-size:1.25rem;margin:6px 0 8px;line-height:1.05;}
-    h1 span{color:var(--accent);display:block;font-weight:700;font-size:1.05rem;margin-top:4px;}
-    p.lead{color:var(--muted);font-size:0.95rem;margin:8px 0 12px;}
-    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
-    .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);font-weight:600;}
-    .hero{width:100%;height:140px;background:linear-gradient(90deg,rgba(0,212,255,0.06),rgba(40,199,111,0.04));border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;margin:10px 0;padding:12px;box-sizing:border-box;}
-    .role-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;justify-content:center;}
-    .chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);font-weight:700;}
-    .testimonial{margin-top:12px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted);text-align:center;}
-    .how{display:flex;gap:10px;margin-top:12px;align-items:flex-start;justify-content:space-between;}
-    .how-step{flex:1;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;font-size:13px;color:var(--muted);text-align:center;margin:0 4px;}
-    .how-step strong{display:block;color:#fff;margin-bottom:6px;}
-    .cta{display:block;width:100%;background:var(--cta);color:#fff;padding:12px;border-radius:999px;text-align:center;font-weight:800;text-decoration:none;font-size:15px;box-shadow:0 8px 20px rgba(40,199,111,0.12);}
-    .cta:hover{background:var(--cta-dark);}
-    .micro{color:var(--muted);font-size:12px;margin-top:8px;text-align:center;}
-    .limited{color:var(--danger);font-weight:700;margin-top:10px;text-align:center;font-size:13px;}
-    .countdown{margin-top:10px;color:var(--accent);font-weight:700;text-align:center;}
-    .progress-wrap{height:6px;background:rgba(255,255,255,0.03);border-radius:999px;margin:10px 0;overflow:hidden;}
-    .progress{height:100%;background:linear-gradient(90deg,var(--cta),var(--accent));width:0%;transition:width 1s linear;}
-    #exhaustionMessage{display:none;margin-top:12px;padding:10px;border-radius:8px;background:rgba(0,212,255,0.08);color:var(--accent);font-weight:700;text-align:center;}
-    .faq{margin-top:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);font-size:13px;}
-    .faq strong{color:#fff;display:block;margin-bottom:4px;}
-    .disclaimer{margin-top:12px;color:var(--muted);font-size:12px;text-align:center;}
-    .notice {background:rgba(0,0,0,0.35);color:var(--muted);padding:10px;border-radius:8px;margin:12px 0;font-size:13px;}
-    .notice a{color:var(--accent);text-decoration:underline;}
-    .notice .dismiss{float:right;background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
-    .sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:999;display:block;}
-    @media(min-width:600px){
-      .wrap{max-width:720px;padding:22px;}
-      .hero{height:180px;flex-direction:row;justify-content:space-between;padding:18px;}
-      .role-chips{margin-top:0;justify-content:flex-end;}
-      .sticky-cta{display:none;}
+
+    html,body{height:100%;margin:0;font-family:Segoe UI,Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;}
+    body{
+      background:linear-gradient(180deg,var(--primary),var(--surface));
+      color:var(--muted); display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+
+    .card{ width:100%; max-width:920px; text-align:center; }
+    .banner{ display:inline-block; background:var(--surface); padding:10px 18px; border-radius:24px; font-weight:700; text-transform:uppercase; box-shadow:0 6px 18px rgba(0,0,0,0.35); margin-bottom:18px; color:#fff; }
+    h1{font-size:2rem;margin:0 0 8px;color:#fff;}
+    h1 span{color:var(--accent);}
+    p{max-width:720px;margin:10px auto;color:var(--muted);line-height:1.4;}
+    .features{margin:12px 0;color:var(--muted);font-size:0.95rem;}
+    picture img{max-width:100%;height:auto;border-radius:8px;display:block;margin:18px auto;box-shadow:0 6px 18px rgba(0,0,0,0.35);}
+    .limited{color:var(--danger);margin-top:8px;font-size:0.95rem;}
+    .cta{ display:inline-block; background:var(--cta); color:#fff; padding:14px 28px; border-radius:40px; font-weight:700; text-decoration:none; margin-top:18px; position:relative; overflow:hidden; transition:transform .12s ease; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,0.25); }
+    .cta:active{ transform:scale(.98); }
+    .sticky-cta{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; z-index:999; background:var(--sticky); color:#fff; padding:12px 22px; border-radius:28px; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,0.35); text-decoration:none; }
+    .popup { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(8,28,44,0.98); padding:16px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.6); z-index:1000; text-align:center; width:90%; max-width:420px; color:var(--muted); }
+    .popup h3{ margin:0 0 8px; color:var(--accent); }
+    .popup p{ margin:0 0 12px; color:var(--muted); }
+    .status-note{ margin-top:12px; color:var(--muted); font-size:0.95rem; }
+
+    /* Pulse animation for countdown text */
+    @keyframes pulse {
+      0%   { transform: scale(1); opacity: 1; }
+      50%  { transform: scale(1.06); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    #countdown { margin-top:12px; font-size:1.05rem; font-weight:700; color:var(--accent); animation: pulse 1s infinite; }
+
+    /* Progress bar container */
+    #progressBarContainer {
+      margin-top:8px;
+      width:100%;
+      max-width:420px;
+      height:10px;
+      background:rgba(255,255,255,0.04);
+      border-radius:6px;
+      overflow:hidden;
+      margin-left:auto;
+      margin-right:auto;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    /* Progress bar with color shift (gradient reveals as width grows) */
+    #progressBar {
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,#2ecc71 0%, #f1c40f 33%, #e67e22 66%, #e74c3c 100%);
+      transition:width 1s linear;
+      transform-origin: left center;
+    }
+
+    footer { margin-top:28px; font-size:0.85rem; color:#9fb0c6; text-align:center; max-width:920px; }
+
+    .benefits, .testimonials, .trust-badges {margin:24px auto; max-width:720px; text-align:left; color:var(--muted);}
+    .benefits ul{list-style:none;padding:0;margin:8px 0 0 0;}
+    .benefits li{margin:6px 0;}
+    .benefits li::before{content:"✔ ";color:var(--cta);}
+    .testimonials blockquote{background:rgba(18,58,90,0.6);padding:12px;border-radius:8px;margin:12px 0;font-style:italic;color:#e6f7ff;}
+    .trust-badges{display:flex;justify-content:center;gap:20px;margin-top:12px;}
+    .trust-badge{background:rgba(18,58,90,0.6);padding:10px 16px;border-radius:8px;font-size:0.9rem;color:#cfeefc;}
+
+    @media (max-width:600px){
+      .cta{ padding:12px 22px; font-size:1rem; border-radius:34px; }
+      .sticky-cta{ padding:12px 20px; font-size:1rem; border-radius:28px; }
+      #progressBarContainer{ max-width:320px; height:8px; }
+      .trust-badges{flex-direction:column;gap:10px;}
     }
   </style>
 </head>
 <body>
-  <main class="wrap" role="main" aria-labelledby="title">
-    <div class="banner" aria-hidden="false">🇺🇸 REMOTE JOBS — U.S. ONLY</div>
+  <div class="card" role="main">
+    <div class="banner">REMOTE JOBS — U.S. RESIDENTS ONLY</div>
+    <h1>Work From Home.<br><span>Earn in USD.</span></h1>
+    <p>Verified U.S. companies are hiring for Data Entry, Virtual Assistance, Customer Support, IT & more. This landing page connects U.S. residents to partner job listings and application pages.</p>
 
-    <h1 id="title">Remote Jobs Hiring Now — U.S. Residents Only
-      <span>Verified roles. Flexible hours. Paid in USD.</span>
-    </h1>
-
-    <p class="lead">Trusted companies are hiring now for remote, entry‑friendly roles. Work from home, set your hours, and get paid in USD — apply today.</p>
-
-    <div class="badges" aria-hidden="true">
-      <div class="badge">✔ Verified Companies</div>
-      <div class="badge">🔒 Secure Application</div>
-      <div class="badge">💵 Paid in USD</div>
+    <!-- Clear benefit list -->
+    <div class="benefits" aria-labelledby="benefits-heading">
+      <h2 id="benefits-heading" style="color:#fff;margin:0 0 8px;">Why Apply?</h2>
+      <ul>
+        <li>Verified U.S. employers</li>
+        <li>Flexible schedules</li>
+        <li>Beginner‑friendly roles</li>
+        <li>Competitive pay in USD</li>
+      </ul>
     </div>
 
-    <!-- Hero with role chips -->
-    <div class="hero" aria-hidden="true">
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;width:100%;">Illustration: Remote work + U.S. map</div>
-      <div class="role-chips" aria-hidden="true" aria-label="Common roles">
-        <div class="chip">Data Entry</div>
-        <div class="chip">Customer Support</div>
-        <div class="chip">Virtual Assistant</div>
-        <div class="chip">IT Support</div>
-      </div>
+    <picture>
+      <source srcset="copilot_image_1772059837403.webp" type="image/webp">
+      <source srcset="copilot_image_1772059837403.jpeg" type="image/jpeg">
+      <img src="copilot_image_1772059837403.jpeg" alt="People working remotely from home" loading="lazy" width="800" height="450">
+    </picture>
+
+    <div style="margin-top:8px;">
+      <a id="mainCta" class="cta" href="javascript:void(0)" aria-label="View Remote Job Listings">View Remote Job Listings</a>
     </div>
 
-    <!-- Primary CTA -->
-    <a id="ctaTop" class="cta" href="#" role="button" aria-label="Apply Now — See Openings">🚀 Apply Now — See Openings</a>
-    <div class="micro">No fees to apply • U.S. residents only</div>
-
-    <div class="limited" aria-hidden="true">Spots filling fast — don’t miss out.</div>
-
-    <!-- Countdown and progress -->
-    <div class="countdown" aria-live="polite">Redirecting in <span id="countdown">5</span>s...</div>
-    <div class="progress-wrap" aria-hidden="true"><div id="progress" class="progress" style="width:0%"></div></div>
-
-    <!-- Exhaustion message -->
-    <div id="exhaustionMessage" role="status">You’ve seen all current openings — check back soon for new roles.</div>
-
-    <!-- Testimonial -->
-    <div class="testimonial" aria-hidden="true">
-      “I applied and started within two weeks — the process was fast and remote onboarding was smooth.” — A. Johnson, Remote Hire
+    <!-- Trust badges -->
+    <div class="trust-badges" aria-hidden="false">
+      <div class="trust-badge">🔒 Secure Redirect</div>
+      <div class="trust-badge">✅ Verified Partners</div>
+      <div class="trust-badge">📄 No Downloads Required</div>
     </div>
 
-    <!-- How it works microsection -->
-    <div class="how" aria-hidden="true" aria-label="How it works">
-      <div class="how-step">
-        <strong>1. Apply</strong>
-        Quick application form — takes minutes.
-      </div>
-      <div class="how-step">
-        <strong>2. Interview</strong>
-        Short remote interview or skills check.
-      </div>
-      <div class="how-step">
-        <strong>3. Start</strong>
-        Remote onboarding and paid work in USD.
-      </div>
+    <div class="limited">Limited spots available – Applications closing soon</div>
+    <div class="status-note" id="statusNote"></div>
+
+    <!-- Visible countdown -->
+    <div id="countdown">Redirecting to verified partner job listings in 5 seconds...</div>
+    <div id="progressBarContainer" aria-hidden="true"><div id="progressBar"></div></div>
+
+    <!-- Testimonials -->
+    <div class="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading" style="color:#fff;margin:18px 0 8px;">Success Stories</h2>
+      <blockquote>“I found my first remote job through this page — the process was simple and fast.”</blockquote>
+      <blockquote>“Within a week I was working with a U.S. company from home. Highly recommended!”</blockquote>
     </div>
+  </div>
 
-    <!-- Blocker notice and manual open -->
-    <div id="blockerNotice" class="notice" style="display:none;">
-      It looks like your browser or an extension may be blocking automatic redirects or storage. If the page doesn't redirect automatically, <a id="manualOpen" href="#" rel="noopener">open available jobs manually</a>. <button class="dismiss" id="dismissNotice" aria-label="Dismiss">✕</button>
+  <a id="stickyCta" class="sticky-cta" href="javascript:void(0)" aria-label="Start Application">Start Application</a>
+
+  <div id="popup" class="popup" role="dialog" aria-hidden="true">
+    <h3>Wait — before you go</h3>
+    <p>We will redirect you to verified partner job listings. Click below to continue.</p>
+    <div style="margin-top:10px;">
+      <a id="popupCta" class="cta" href="javascript:void(0)" aria-label="See Available Jobs">See Available Jobs</a>
     </div>
+  </div>
 
-    <!-- FAQ -->
-    <section class="faq" aria-labelledby="faqTitle">
-      <h2 id="faqTitle" style="color:var(--accent);margin:0 0 8px;font-size:14px;">FAQ</h2>
-      <div><strong>Do I need experience?</strong><span>No — many roles include training.</span></div>
-      <div style="margin-top:8px;"><strong>Is it free to apply?</strong><span>Yes — there are no application fees.</span></div>
-      <div style="margin-top:8px;"><strong>How soon can I start?</strong><span>Most hires start within 1–2 weeks.</span></div>
-      <div style="margin-top:8px;"><strong>Do I need equipment?</strong><span>A reliable internet connection and a computer are required.</span></div>
-      <div style="margin-top:8px;"><strong>Who can apply?</strong><span>Only United States residents.</span></div>
-    </section>
-
-    <p class="disclaimer" role="note"><strong>Important:</strong> Opportunities are <strong>only available to United States residents</strong>. If you are not a U.S. resident, please do not apply.</p>
-
-    <div style="margin-top:10px;color:var(--muted);font-size:12px;text-align:center;">
-      We use localStorage only to rotate offers and remember visits; no personal data is collected or shared.
+  <footer>
+    © 2026 Remote Jobs. This is a promotional landing page that redirects to partner job listings. Not affiliated with Google.
+    <div style="margin-top:8px;">
+      <a href="mailto:sadekills381@gmail.com" style="color:#cfeefc;text-decoration:none;">Contact: sadekills381@gmail.com</a>
+      <span style="display:inline-block;margin:0 8px;color:#7f9fb3;">|</span>
+      <a href="#" style="color:#cfeefc;text-decoration:none;">Privacy Policy</a>
+      <span style="display:inline-block;margin:0 8px;color:#7f9fb3;">|</span>
+      <a href="#" style="color:#cfeefc;text-decoration:none;">Terms</a>
     </div>
-  </main>
-
-  <!-- Sticky CTA (mobile) -->
-  <a id="ctaSticky" class="sticky-cta" href="#" aria-hidden="false" style="text-decoration:none;">
-    <div class="cta" role="button" aria-label="Apply Now — See Openings">🚀 Apply Now — See Openings</div>
-  </a>
-
-  <!-- Visible fallback for users with JavaScript disabled -->
-  <noscript>
-    <div style="max-width:460px;margin:18px auto;padding:12px;background:#111;border-radius:8px;color:#fff;font-family:Inter,Arial;text-align:center;">
-      <p style="margin:0 0 8px;font-weight:700;">JavaScript is disabled</p>
-      <p style="margin:0 0 12px;color:#cfd8e3;">Automatic redirect requires JavaScript. Click the link below to open available jobs.</p>
-      <a href="https://nx2bs.com/c?o=402&a=26132" style="display:inline-block;padding:10px 14px;background:var(--cta);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;">Open Available Jobs</a>
-    </div>
-  </noscript>
+    <div style="margin-top:6px;color:#8aa0b8;">Privacy and contact information available on partner pages and via the contact link above.</div>
+  </footer>
 
   <script>
-    (function(){
-      // Offer list (HTTPS)
-      const offers = [
-        "https://nx2bs.com/c?o=402&a=26132",
-        "https://nx2bs.com/c?o=42&a=26132",
-        "https://nx2bs.com/c?o=45&a=26132",
-        "https://nx2bs.com/c?o=44&a=26132"
-      ];
+    // -------------------------
+    // Configuration
+    // -------------------------
+    const offers = [
+      "https://nx2bs.com/c?o=402&a=26132",
+      "https://nx2bs.com/c?o=42&a=26132",
+      "https://nx2bs.com/c?o=45&a=26132",
+      "https://nx2bs.com/c?o=44&a=26132"
+    ];
 
-      // Sanitize offers: keep only HTTPS
-      for (let i = offers.length - 1; i >= 0; i--) {
-        if (!offers[i] || !offers[i].startsWith("https://")) offers.splice(i, 1);
+    // LocalStorage key for per-user used offers
+    const USED_KEY = "usedOffers_v2";
+
+    // Timers
+    const COUNTDOWN_START = 5;
+    let redirectSeconds = COUNTDOWN_START;
+    let countdownInterval = null;
+    let isRedirecting = false;
+
+    // Elements
+    const mainCta = document.getElementById("mainCta");
+    const stickyCta = document.getElementById("stickyCta");
+    const statusNote = document.getElementById("statusNote");
+    const countdownEl = document.getElementById("countdown");
+    const progressBar = document.getElementById("progressBar");
+    const popup = document.getElementById("popup");
+    const popupCta = document.getElementById("popupCta");
+
+    // -------------------------
+    // Helpers
+    // -------------------------
+    function readUsed() {
+      try {
+        return JSON.parse(localStorage.getItem(USED_KEY) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+    function writeUsed(arr) {
+      try {
+        localStorage.setItem(USED_KEY, JSON.stringify(arr));
+      } catch (e) {
+        // ignore storage errors
+      }
+    }
+
+    // -------------------------
+    // Unique randomized offer selection (no duplicates within a cycle)
+    // -------------------------
+    function getUniqueOfferRandom() {
+      let used = readUsed();
+      let available = offers.filter(o => !used.includes(o));
+
+      if (available.length === 0) {
+        // Reset cycle when all offers have been used
+        used = [];
+        available = [...offers];
       }
 
-      let seconds = 5;
-      let timer = null;
-      const countdownEl = document.getElementById("countdown");
-      const progressEl = document.getElementById("progress");
-      const exhaustionEl = document.getElementById("exhaustionMessage");
-      const total = seconds;
+      // pick random offer from available
+      const idx = Math.floor(Math.random() * available.length);
+      const choice = available[idx];
 
-      // Cookie helpers
-      function setCookie(name, value, days) {
-        const d = new Date();
-        d.setTime(d.getTime() + (days*24*60*60*1000));
-        const expires = "expires="+ d.toUTCString();
-        document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+      used.push(choice);
+      writeUsed(used);
+      updateStatusNote();
+      return choice;
+    }
+
+    // -------------------------
+    // Safe redirect helper
+    // -------------------------
+    function safeRedirect(url) {
+      if (isRedirecting) return;
+      isRedirecting = true;
+
+      // stop countdown to avoid negative numbers or multiple attempts
+      if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
       }
 
-      function getCookie(name) {
-        const cname = name + "=";
-        const decodedCookie = decodeURIComponent(document.cookie || "");
-        const ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-          let c = ca[i].trim();
-          if (c.indexOf(cname) === 0) {
-            return c.substring(cname.length, c.length);
-          }
-        }
-        return "";
+      if (!url || typeof url !== 'string') {
+        statusNote.innerText = "Redirect failed: invalid URL. Please click the button to try again.";
+        isRedirecting = false;
+        return;
       }
 
-      // Check localStorage availability
-      function localStorageAvailable() {
-        try {
-          const testKey = "__ls_test__";
-          localStorage.setItem(testKey, "1");
-          localStorage.removeItem(testKey);
-          return true;
-        } catch (e) {
-          return false;
-        }
+      try {
+        // attempt navigation
+        window.location.href = url;
+      } catch (err) {
+        // fallback: show message and allow user to click manually
+        console.error("Redirect failed:", err);
+        statusNote.innerText = "Redirect blocked or failed. Please click the button to continue.";
+        isRedirecting = false;
       }
+    }
 
-      // Return the list of used offers (array) or [] if none
-      function getUsedOffers() {
-        if (!localStorageAvailable()) return [];
-        try {
-          return JSON.parse(localStorage.getItem("usedOffers") || "[]");
-        } catch (e) {
-          return [];
-        }
-      }
-
-      // Persist used offers array
-      function setUsedOffers(arr) {
-        if (!localStorageAvailable()) return;
-        try {
-          localStorage.setItem("usedOffers", JSON.stringify(arr));
-        } catch (e) {
-          // ignore
-        }
-      }
-
-      // Pick an unused offer for this user; mark it used. If all used, show exhaustion message then reset.
-      function getUniqueOffer() {
-        if (offers.length === 0) return null;
-        if (!localStorageAvailable()) {
-          // fallback: random pick without persistence
-          return offers[Math.floor(Math.random() * offers.length)];
-        }
-
-        let used = getUsedOffers();
-        let available = offers.filter(o => !used.includes(o));
-
-        if (available.length === 0) {
-          // Show exhaustion message before reset
-          if (exhaustionEl) {
-            exhaustionEl.style.display = "block";
-            // Hide the message after a short delay so users see it
-            setTimeout(() => {
-              if (exhaustionEl) exhaustionEl.style.display = "none";
-            }, 6000);
-          }
-
-          // Reset used list and make all offers available again
-          used = [];
-          setUsedOffers(used);
-          available = [...offers];
-        }
-
-        const pick = available[Math.floor(Math.random() * available.length)];
-        used.push(pick);
-        setUsedOffers(used);
-        return pick;
-      }
-
-      // CTA rotation uses the same unique logic
-      function rotateOffer() {
-        // Clear any running timer to avoid race conditions
-        if (timer) { clearInterval(timer); timer = null; }
-        const url = getUniqueOffer();
-        if (url) {
-          window.location.href = url;
-        } else {
-          // fallback: open first offer if something went wrong
-          window.location.href = offers[0] || "#";
-        }
-      }
-
-      // Countdown update for first-time visitors
-      function updateCountdown() {
-        if (seconds <= 0) {
-          clearInterval(timer);
-          timer = null;
-          const redirectUrl = getUniqueOffer();
-          if (redirectUrl) window.location.href = redirectUrl;
-          return;
-        }
-        if (countdownEl) countdownEl.innerText = seconds;
-        const pct = Math.round(((total - seconds + 1) / (total + 1)) * 100);
-        if (progressEl) progressEl.style.width = pct + "%";
-        seconds--;
-      }
-
-      // UI elements for blocker notice and manual open
-      const blockerNotice = document.getElementById("blockerNotice");
-      const manualOpen = document.getElementById("manualOpen");
-      const dismissNotice = document.getElementById("dismissNotice");
-
-      // Show blocker notice if localStorage is unavailable
-      if (!localStorageAvailable()) {
-        if (blockerNotice) blockerNotice.style.display = "block";
-        if (manualOpen) manualOpen.href = offers[0] || "#";
+    // -------------------------
+    // Show welcome back (informational) and always redirect
+    // -------------------------
+    function handleCtaClick(e) {
+      // Determine if returning visitor (only if used array exists and length > 0)
+      const used = readUsed();
+      if (used.length > 0) {
+        statusNote.innerText = "Welcome back — taking you to the next available partner listing...";
       } else {
-        if (blockerNotice) blockerNotice.style.display = "none";
+        statusNote.innerText = "";
       }
 
-      if (dismissNotice) {
-        dismissNotice.addEventListener("click", function(){
-          if (blockerNotice) blockerNotice.style.display = "none";
-        });
+      // micro-interaction ripple
+      createRipple(e, e.currentTarget || mainCta);
+      if (navigator.vibrate) navigator.vibrate(12);
+
+      // always pick a randomized unique offer and redirect immediately
+      const url = getUniqueOfferRandom();
+      // small delay to allow ripple to show on slow devices
+      setTimeout(() => { safeRedirect(url); }, 120);
+    }
+
+    // -------------------------
+    // Countdown auto-redirect (always redirects) with visible timer + progress bar
+    // -------------------------
+    function countdownTick() {
+      if (!countdownEl || !progressBar) return;
+
+      // clamp display value to zero minimum
+      const displaySeconds = Math.max(0, redirectSeconds);
+      countdownEl.innerText = `Redirecting to verified partner job listings in ${displaySeconds} second${displaySeconds !== 1 ? 's' : ''}...`;
+
+      const elapsed = COUNTDOWN_START - redirectSeconds;
+      const percent = Math.max(0, Math.min(100, (elapsed / COUNTDOWN_START) * 100));
+      progressBar.style.width = percent + "%";
+
+      if (redirectSeconds <= 0) {
+        // ensure we only attempt redirect once
+        const url = getUniqueOfferRandom();
+        safeRedirect(url);
+        return;
       }
+      redirectSeconds--;
+    }
 
-      // On load: use cookie to determine returning visitor; fallback to localStorage if needed
-      window.addEventListener("load", function() {
-        // Console warning if not HTTPS (CSP attempts to upgrade)
-        if (location.protocol !== "https:") {
-          console.warn("Page is not served over HTTPS. Content-Security-Policy attempts to upgrade insecure requests.");
-        }
+    // -------------------------
+    // Ripple micro-interaction
+    // -------------------------
+    function createRipple(e, el) {
+      try {
+        const rect = el.getBoundingClientRect();
+        const ripple = document.createElement("span");
+        ripple.className = "ripple";
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + "px";
+        const x = (e && e.clientX) ? e.clientX - rect.left - size / 2 : rect.width / 2 - size / 2;
+        const y = (e && e.clientY) ? e.clientY - rect.top - size / 2 : rect.height / 2 - size / 2;
+        ripple.style.left = x + "px";
+        ripple.style.top = y + "px";
+        el.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 650);
+      } catch (err) { /* ignore */ }
+    }
 
-        const cookieVisited = getCookie("visited");
-        const lsOk = localStorageAvailable();
-        const lsVisited = lsOk && localStorage.getItem("visited");
-
-        if (cookieVisited === "true" || lsVisited) {
-          // Returning visitor: do NOT auto-redirect. Show CTA and friendly message.
-          const countdownWrapper = document.querySelector('.countdown');
-          if (countdownWrapper) countdownWrapper.innerText = "Welcome back — click Apply to see new openings.";
-          if (progressEl) progressEl.style.width = "100%";
-        } else {
-          // First-time visitor: set cookie and localStorage flag, then start countdown auto-redirect.
-          try { setCookie("visited", "true", 30); } catch (e) { /* ignore */ }
-          if (lsOk) {
-            try { localStorage.setItem("visited", "true"); } catch (e) { /* ignore */ }
+    // -------------------------
+    // Exit-intent popup (gentle reminder)
+    // -------------------------
+    function setupExitIntent() {
+      document.addEventListener("mouseout", function(e) {
+        if (e.clientY < 10) {
+          if (!sessionStorage.getItem("exitIntentShown")) {
+            popup.style.display = "block";
+            popup.setAttribute("aria-hidden", "false");
+            sessionStorage.setItem("exitIntentShown", "1");
           }
-          seconds = total;
-          if (countdownEl) countdownEl.innerText = seconds;
-          if (progressEl) progressEl.style.width = "0%";
-          timer = setInterval(updateCountdown, 1000);
         }
       });
+    }
+    function closePopup() {
+      popup.style.display = "none";
+      popup.setAttribute("aria-hidden", "true");
+    }
 
-      // CTA handlers: single click navigates to a unique offer
-      const ctas = [document.getElementById("ctaTop"), document.getElementById("ctaSticky")].filter(Boolean);
-      ctas.forEach(btn => {
-        btn.addEventListener("click", function(e){
-          e.preventDefault();
-          // Clear timer to avoid double navigation
-          if (timer) { clearInterval(timer); timer = null; }
-          rotateOffer();
-        });
-        btn.addEventListener("focus", function(){
-          if (timer) {
-            clearInterval(timer);
-            timer = null;
-            const countdownWrapper = document.querySelector('.countdown');
-            if (countdownWrapper) countdownWrapper.innerText = "Ready to apply";
-            if (progressEl) progressEl.style.width = "100%";
-          }
-        });
+    // -------------------------
+    // Initialization
+    // -------------------------
+    window.addEventListener("DOMContentLoaded", function() {
+      // Wire up CTAs
+      mainCta.addEventListener("click", handleCtaClick);
+      stickyCta.addEventListener("click", handleCtaClick);
+      popupCta.addEventListener("click", function(e) { closePopup(); handleCtaClick(e); });
+
+      // Close popup when clicking outside or pressing Escape
+      document.addEventListener("click", function(e) {
+        if (popup.style.display === "block" && !popup.contains(e.target) && !e.target.matches('.cta')) {
+          closePopup();
+        }
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closePopup();
       });
 
-      // Manual open link for blocker notice
-      if (manualOpen) {
-        manualOpen.addEventListener("click", function(e){
-          e.preventDefault();
-          const url = offers[0] || "#";
-          window.open(url, "_self");
-        });
-      }
-    })();
+      // Start countdown (auto-redirect)
+      if (countdownEl) countdownEl.innerText = `Redirecting to verified partner job listings in ${redirectSeconds} second${redirectSeconds !== 1 ? 's' : ''}...`;
+      if (progressBar) progressBar.style.width = "0%";
+      countdownInterval = setInterval(countdownTick, 1000);
+
+      // Setup exit-intent
+      setupExitIntent();
+
+      // Update contextual sticky label
+      updateStatusNote();
+
+      // Mobile touch feedback
+      addTouchFeedback(".cta, .sticky-cta");
+    });
+
+    // Update sticky CTA label and status note
+    function updateStatusNote() {
+      const used = readUsed();
+      const seen = used.length;
+      const total = offers.length;
+      statusNote.innerText = seen > 0 ? `You’ve viewed ${seen} of ${total} partner listings.` : "";
+      stickyCta.innerText = seen > 0 ? `Start Application (${seen}/${total})` : `Start Application`;
+    }
+
+    // Larger tap targets micro-interaction for mobile
+    function addTouchFeedback(selector) {
+      document.querySelectorAll(selector).forEach(el => {
+        el.addEventListener("touchstart", function() { el.style.transform = "scale(.98)"; }, { passive: true });
+        el.addEventListener("touchend", function() { el.style.transform = ""; }, { passive: true });
+      });
+    }
   </script>
 </body>
-        </html>
+                                                                                                      </html>
